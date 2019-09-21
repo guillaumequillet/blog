@@ -1,6 +1,7 @@
 <?php
 require_once('controller/EpisodeListController.php');
 require_once('controller/EpisodeController.php');
+require_once('controller/CommentController.php');
 
 // some checks mus be added
 $action  = isset($_GET['action']) ? $_GET['action'] : 'episode';
@@ -15,6 +16,8 @@ $page_title = 'Billet simple pour l\'Alaska' . ' épisode ' . $episode;
 $episodeController = new EpisodeController($episode);
 $pageContent = $episodeController->render();
 
-// we can then append to this $pageContent variable, with comments !
+// comments
+$commentController = new CommentController($episode);
+$commentContent = $commentController->render();
 
 require('view/template.html.php');

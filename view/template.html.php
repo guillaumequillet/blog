@@ -14,6 +14,10 @@
 	<?= $pageContent ?>
 </main>
 
+<section>
+	<?= $commentContent ?>
+</section>
+
 <footer>
 	<p>&copy; 2019 Jean Forteroche "Billet simple pour l'Alaska"</p>
 </footer>

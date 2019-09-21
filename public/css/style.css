@@ -1,3 +1,7 @@
+strong {
+	text-decoration: underline;
+}
+
 header {
 	border: 1px solid red;
 	padding: 20px;
@@ -20,6 +24,18 @@ article {
 	padding: 20px;
 	width: 80%;
 	box-sizing: border-box;
+}
+
+.comment {
+	margin: 20px;
+	padding: 20px;
+	border: 1px dotted orange;
+}
+
+.comment h6 {
+	background-color: blue;
+	color: white;
+	padding: 5px;
 }
 
 footer {

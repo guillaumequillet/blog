@@ -1,5 +1,6 @@
 <?php
 require_once('Controller.php');
+require_once('model/EpisodeModel.php');
 
 class EpisodeController extends Controller
 {
