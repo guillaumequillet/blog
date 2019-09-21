@@ -9,6 +9,8 @@ $episode = isset($_GET['id']) ? $_GET['id'] : 0;
 $menuListController = new EpisodeListController();
 $episodeListMenu = $menuListController->render();
 
+// creation of Episode Content
+$page_title = 'Billet simple pour l\'Alaska' . ' épisode ' . $episode;
 
 
 require('view/template.html.php');
