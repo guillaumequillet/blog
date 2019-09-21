@@ -9,9 +9,13 @@
 		<p>Ici se trouvera un logo incroyable</p>
 		<p>Nous vous souhaitons la bienvenue sur le livre numérique de Jean Forteroche !</p>
 	</header>
-	<?= $episodeListMenu ?>
 <main>
+	<?= $episodeListMenu ?>
 	<?= $pageContent ?>
 </main>
+
+<footer>
+	<p>&copy; 2019 Jean Forteroche "Billet simple pour l'Alaska"</p>
+</footer>
 </body>
 </html>
