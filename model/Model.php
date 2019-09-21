@@ -7,14 +7,10 @@ class Model
 	private $_username = 'root';
 	private $_password = '';
 
-	public function __construct() {
-
-	}	
-
 	public function getPDO() {
-		if (!isset($this->pdo)) {
-			$this->pdo = new PDO('dblib:host=' . $this->host .';dbname=' . $this->dabatase . ';charset=UTF-8', $this->_username, $this->_password);
+		if (!isset($this->_pdo)) {
+			$this->_pdo = new PDO('mysql:host=' . $this->_host . ';dbname=' . $this->_database . ';charset=utf8', $this->_username, $this->_password);
 		}
-		return $this->pdo;
+		return $this->_pdo;
 	}
 }
