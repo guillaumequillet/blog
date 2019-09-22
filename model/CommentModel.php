@@ -5,7 +5,17 @@ class CommentModel extends Model
 {
 	public function getComments($episode_id) {
 		$res = $this->getPDO()->query('SELECT * FROM comments WHERE episode_id=' . $episode_id);
-		return $res->fetchAll();
+		return $res;
+	}
+
+	public function addComment($author, $content, $episode_id) {
+		$req = $this->getPDO()->prepare('INSERT INTO comments(author, content, episode_id, status) VALUES(:author, :content, :episode_id, :status)');
+		$req->execute(array(
+			'author'  	 => $author,
+			'content' 	 => $content,
+			'episode_id' => $episode_id,
+			'status' 	 => 'UNCHECKED'
+		)) or die(print_r($this->getPDO()->errorInfo()));
 	}
 
 	// default STATUS : "UNCHECKED"

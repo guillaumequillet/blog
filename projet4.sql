@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  Dim 22 sep. 2019 à 17:23
+-- Généré le :  Dim 22 sep. 2019 à 17:32
 -- Version du serveur :  10.4.6-MariaDB
 -- Version de PHP :  7.3.9
 
@@ -33,7 +33,8 @@ CREATE TABLE `comments` (
   `episode_id` int(11) NOT NULL,
   `author` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL,
-  `status` varchar(9) NOT NULL
+  `status` varchar(9) NOT NULL,
+  `publication_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
