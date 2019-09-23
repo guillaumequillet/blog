@@ -8,7 +8,5 @@ class CommentController extends Controller
 		$this->_model = new CommentModel();
 		$this->_data = $this->_model->getComments($episode_id);
 		$this->_view = 'view/comments.html.php';
-
-		// $this->_model->addComment('Autre utilisateur', 'Ceci est un autre commentaire de test', 1);
 	}
 }
