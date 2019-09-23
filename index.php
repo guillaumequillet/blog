@@ -11,6 +11,8 @@ require_once('controller/CommentController.php');
 
 // some checks must be added
 $action     = isset($_GET['action']) ? $_GET['action'] : 'episode';
+
+// we should check that this episode exists, and call a default one OR some 404 page if not present
 $episode_id = isset($_GET['id']) ? $_GET['id'] : 1;
 
 // creation of Menu List Controller object
