@@ -14,7 +14,7 @@ class CommentModel extends Model
 		)) or die(print_r($this->getPDO()->errorInfo()));
 	}
 
-	public function getComments($episode_id) {
+	public function getEpisodeComments($episode_id) {
 		$res = $this->getPDO()->query('SELECT * FROM comments WHERE episode_id=' . $episode_id);
 		return $res;
 	}
