@@ -1,7 +1,7 @@
 <nav id="episodeList">
 <ul>
 <?php foreach($data as $element): ?>
-<li><?= $element['title'] ?></li>
+<li><a href="index.php?action=episode&id=<?= $element['id'] ?>"><?= $element['title'] ?></a></li>
 <?php endforeach; ?>
 </ul>
 </nav>

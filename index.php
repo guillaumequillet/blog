@@ -1,10 +1,16 @@
 <?php
+/*
+	NOTICES / TODOS
+
+	if you remove some episode, you MUST delete all the related comments as well !
+*/
+
 require_once('controller/EpisodeListController.php');
 require_once('controller/EpisodeController.php');
 require_once('controller/CommentController.php');
 
 // some checks must be added
-$action  = isset($_GET['action']) ? $_GET['action'] : 'episode';
+$action     = isset($_GET['action']) ? $_GET['action'] : 'episode';
 $episode_id = isset($_GET['id']) ? $_GET['id'] : 1;
 
 // creation of Menu List Controller object
