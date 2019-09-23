@@ -3,6 +3,12 @@ require_once('Model.php');
 
 class EpisodeModel extends Model 
 {
+	public static function hasEpisode($id) {
+		$temp = new EpisodeModel($id);
+		$res  = $temp->getPDO()->query('SELECT COUNT(*) FROM episodes WHERE id=' . $id);
+		return (bool) $res->fetch()[0];
+	}
+
 	// front and back-end methods
 	public function getEpisodeTitles() {
 		$res = $this->getPDO()->query('SELECT id, title FROM episodes');

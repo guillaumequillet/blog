@@ -7,4 +7,8 @@ class Controller
 		require($this->_view);
 		return ob_get_clean();
 	}
+
+	public function getModel() {
+		return $this->_model;
+	}
 }
