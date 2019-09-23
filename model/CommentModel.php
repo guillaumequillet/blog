@@ -15,7 +15,7 @@ class CommentModel extends Model
 	}
 
 	public function getEpisodeComments($episode_id) {
-		$res = $this->getPDO()->query('SELECT * FROM comments WHERE episode_id=' . $episode_id);
+		$res = $this->getPDO()->query('SELECT * FROM comments WHERE episode_id=' . $episode_id . ' ORDER BY publication_date DESC');
 		return $res;
 	}
 

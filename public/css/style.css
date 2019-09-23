@@ -26,6 +26,11 @@ article {
 	box-sizing: border-box;
 }
 
+form {
+	display: flex;
+	flex-direction: column;
+}
+
 .comment {
 	margin: 20px;
 	padding: 20px;
