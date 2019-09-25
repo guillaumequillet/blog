@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 class Model 
 {
 	private $_pdo;
@@ -7,7 +9,7 @@ class Model
 	private $_username = 'root';
 	private $_password = '';
 
-	public function getPDO() {
+	public function getPDO(): PDO {
 		if (!isset($this->_pdo)) {
 			$this->_pdo = new PDO('mysql:host=' . $this->_host . ';dbname=' . $this->_database . ';charset=utf8', $this->_username, $this->_password);
 		}
