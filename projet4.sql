@@ -2,8 +2,8 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le :  Dim 22 sep. 2019 à 17:32
+-- Hôte : 127.0.0.1
+-- Généré le :  mer. 25 sep. 2019 à 09:46
 -- Version du serveur :  10.4.6-MariaDB
 -- Version de PHP :  7.3.9
 
@@ -51,6 +51,18 @@ CREATE TABLE `episodes` (
   `publication_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Index pour les tables déchargées
 --
@@ -68,6 +80,12 @@ ALTER TABLE `episodes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -81,6 +99,12 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT pour la table `episodes`
 --
 ALTER TABLE `episodes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
