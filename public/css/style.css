@@ -1,0 +1,30 @@
+header {
+	background-color: yellow;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+}
+
+#menuList {
+	width: 20%;
+	background-color: red;
+	padding: 20px;
+}
+
+article {
+	width: 80%;
+	background-color: green;
+	padding: 20px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+}
+
+footer {
+	background-color: purple;
+}

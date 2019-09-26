@@ -2,21 +2,31 @@
 declare(strict_types=1);
 
 $pageTitle = "Episode" . $data['episode']['id'];
-$pageContent = $data['episode']['content'];
+
+ob_start();
+?>
+<article>
+	<?= $data['episode']['content'] ?>
+</article>
+<?php
+$pageContent = ob_get_clean();
 
 // Episode List section
 ob_start();
 ?>
-<ul>
-<?php foreach($data['episodeList'] as $episode): ?>
-	<li><a href=index.php?controller=episode&action=show&param=<?= $episode['id'] ?>><?= $episode['title'] ?></a></li>
-<?php endforeach; ?>
-</ul>
+<nav id="menuList">
+    <ul >
+        <?php foreach($data['episodeList'] as $episode): ?>
+        <li><a href=index.php?controller=episode&action=show&param=<?= $episode['id'] ?>><?= $episode['title'] ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+</nav>
 <?php
 $episodeListMenu = ob_get_clean();
 
 // Comments section
 ob_start(); ?>
+<h2>Ajouter un commentaire </h2>
 <form action="index.php?controller=comment&action=add&param=<?= $data['episode']['id'] ?>" method="post">
 	<label for="author">Nom d'utilisateur</label>
 	<input name="author" id="author" required>
@@ -24,6 +34,8 @@ ob_start(); ?>
 	<textarea name="content" id="content" required></textarea>
 	<input type="submit" value="Envoyer le commentaire">
 </form>
+
+<h2>Commentaires</h2>
 <?php if ($data['comments'] != null): ?>
 	<?php foreach($data['comments'] as $comment): ?>
 		<p>Auteur : <?= $comment['author'] ?> Message : <?= $comment['content'] ?></p>
