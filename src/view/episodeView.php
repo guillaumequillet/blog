@@ -16,11 +16,32 @@ ob_start();
 $episodeListMenu = ob_get_clean();
 
 // Comments section
-ob_start();
-?>
-<?php if (!empty($data['comments'])): ?>
+ob_start(); ?>
+<form action="index.php?controller=comment&action=add&param=<?= $data['episode']['id'] ?>" method="post">
+	<label for="author">Nom d'utilisateur</label>
+	<input name="author" id="author" required>
+	<label for="content">Message</label>
+	<textarea name="content" id="content" required></textarea>
+	<input type="submit" value="Envoyer le commentaire">
+</form>
+<?php if ($data['comments'] != null): ?>
 	<?php foreach($data['comments'] as $comment): ?>
 		<p>Auteur : <?= $comment['author'] ?> Message : <?= $comment['content'] ?></p>
+		<P>
+		<?php
+			switch ($comment['status']) {
+				case 'UNCHECKED':
+					echo '<a href=index.php?controller=comment&action=report&param=' . $comment['id'] . '>Signaler le commentaire</a>';
+					break;				
+				case 'REPORTED':
+					echo 'Le message a été signalé à l\'administrateur';
+					break;
+				default: 
+					echo 'Le message a été validé par l\'administrateur';
+			}
+		?>
+		</p>
+		<hr>
 	<?php endforeach; ?>
 <?php endif; 
 $commentContent = ob_get_clean();

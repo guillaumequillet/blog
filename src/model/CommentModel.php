@@ -5,23 +5,28 @@ require_once('Model.php');
 class CommentModel extends Model 
 {
 	// Front-End methods
-	public function addComment(string $author, string $content, int $episode_id): bool {
-		$req = $this->getPDO()->prepare('INSERT INTO comments(author, content, episode_id, status) VALUES(:author, :content, :episode_id, :status)');
+	public function addComment(string $author, string $content, int $episodeId) {
+		$req = $this->getPDO()->prepare('INSERT INTO comments(author, content, episode_id, status) VALUES(:author, :content, :episodeId, :status)');
 		$req->execute(array(
 			'author'  	 => $author,
 			'content' 	 => $content,
-			'episode_id' => $episode_id,
+			'episodeId' => $episodeId,
 			'status' 	 => 'UNCHECKED'
 		)) or die(print_r($this->getPDO()->errorInfo()));
 	}
 
-	public function getEpisodeComments(int $episode_id): array {
-		$res = $this->getPDO()->query('SELECT * FROM comments WHERE episode_id=' . $episode_id . ' ORDER BY publication_date DESC');
-		return $res->fetchAll();
+	public function getComment(int $id): ?array {
+		$req = $this->getPDO()->query('SELECT * FROM comments WHERE id='. $id);
+		return ($req === false) ? null : $req->fetch();
+	}
+
+	public function getEpisodeComments(int $episodeId): ?array {
+		$req = $this->getPDO()->query('SELECT * FROM comments WHERE episode_id=' . $episodeId . ' ORDER BY publication_date DESC');
+		return ($req === false) ? null : $req->fetchAll();
 	}
 
 	// for status "UNCHECKED" only
-	public function reportComment(int $id): bool {
+	public function reportComment(int $id) {
 		$this->getPDO()->query('UPDATE comments SET status="REPORTED" WHERE id=' . $id);
 	}
 
@@ -38,12 +43,12 @@ class CommentModel extends Model
 	}
 
 	// for whatever status between "REPORTED" and "UNCHECKED"
-	public function deleteComment(int $id): bool {
+	public function deleteComment(int $id) {
 		$this->getPDO()->query('DELETE FROM comments WHERE id=' . $id);
 	}
 
 	// for status "REPORTED"
-	public function approveComment(int $id): bool {
+	public function approveComment(int $id) {
 		$this->getPDO()->query('UPDATE comments SET status="APPROVED" WHERE id=' . $id);
 	}
 }
