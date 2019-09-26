@@ -10,16 +10,14 @@ if (isset($_GET['controller']) && class_exists(ucfirst($_GET['controller']) . 'C
 	$controller = new $className;
 	
 	// if action exists
-	if (isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
+	if (isset($_GET['action']) && method_exists($controller, $_GET['action']) && isset($_GET['param'])) {
 		$action = $_GET['action'];
-		$param = isset($_GET['param']) ? (int)$_GET['param'] : 1;
+		$param = (int)$_GET['param'];
 		$controller->$action($param);
-	} else {
-		// action doesn't exist
-		$controller->unfound();
 	}
-} else {
-	// controller doesn't exist
+}
+
+if (!isset($controller) || !isset($action)) {
 	$controller = new EpisodeController();
 	$controller->unfound();
 }

@@ -18,6 +18,10 @@ class EpisodeController extends Controller
 		} else {
 			$this->_data['episode'] = $episodeData;
 			$this->_data['episodeList'] = $this->_model->getEpisodeTitles();
+		
+			// comments section
+			$this->_model = new CommentModel();
+			$this->_data['comments'] = $this->_model->getEpisodeComments($episodeId);
 
 			$this->_view = new View('src/view/episodeView.php');
 			$this->_view->render($this->_data);
