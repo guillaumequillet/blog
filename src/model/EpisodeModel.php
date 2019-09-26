@@ -10,9 +10,10 @@ class EpisodeModel extends Model
 		return $res->fetchAll();
 	}
 
-	public function getEpisode(int $id): array {
-		$res = $this->getPDO()->query('SELECT * FROM episodes WHERE id=' . $id);
-		return $res->fetch();
+	public function getEpisode(int $id): ?array {
+		$req = $this->getPDO()->query('SELECT * FROM episodes WHERE id=' . $id);
+		$res = $req->fetch();
+		return (is_bool($res) ? null : $res);
 	}
 
 	// back-end methods

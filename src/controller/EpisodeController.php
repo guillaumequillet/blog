@@ -9,8 +9,23 @@ class EpisodeController extends Controller
 {
 	public function show(int $episodeId) {
 		$this->_model = new EpisodeModel();
-		$this->_data = $this->_model->getEpisode($episodeId);
-		$this->_view = new View('src/view/episodeView.php');
-		$this->_view->render($this->_data);
+		$this->_data = Array();
+
+		$episodeData = $this->_model->getEpisode($episodeId);
+
+		if ($episodeData === null) {
+			$this->unfound();
+		} else {
+			$this->_data['episode'] = $episodeData;
+			$this->_data['episodeList'] = $this->_model->getEpisodeTitles();
+
+			$this->_view = new View('src/view/episodeView.php');
+			$this->_view->render($this->_data);
+		}
+	}
+
+	public function unfound() {
+		$this->_view = new View('src/view/unfoundView.php');
+		$this->_view->render(null);
 	}
 }

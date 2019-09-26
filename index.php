@@ -16,9 +16,11 @@ if (isset($_GET['controller']) && class_exists(ucfirst($_GET['controller']) . 'C
 		$controller->$action($param);
 	} else {
 		// action doesn't exist
+		$controller->unfound();
 	}
 } else {
-	$controller = new EpisodeController;
-	$controller->show(1); 
+	// controller doesn't exist
+	$controller = new EpisodeController();
+	$controller->unfound();
 }
 

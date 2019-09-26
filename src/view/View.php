@@ -7,7 +7,7 @@ class View
 		$this->_path = $path;
 	}
 
-	public function render(array $data) {
+	public function render(?array $data) {
 		require($this->_path);
 		require('templates/template.html.php');
 	}
