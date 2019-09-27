@@ -1,5 +1,49 @@
+body {
+	width: 80%;
+	margin: auto;
+	background-color: #d9f1f9;
+}
+
+/* begin HEADER */
 header {
-	background-color: yellow;
+
+}
+
+#mainMenu ul {
+	display: flex;
+	justify-content: space-around;
+}
+
+#mainMenu li {
+	display: inline-block;
+	background-color: #014874;
+	border-top: 2px solid #35a3de;
+	border-bottom: 2px solid #04112a;
+	width: 30%;
+	text-align: center;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+#mainMenu li:hover {
+	background-color: #35a3de;
+	border-top: 2px solid #014874;	
+	border-bottom: 2px solid #04112a;
+}
+
+#mainMenu a {
+	font-size: 1.3em;
+	color: white;
+	text-decoration: none;
+}
+
+#mainMenu a:hover {
+	text-decoration: underline;
+}
+
+header img {
+	width: 100%;
+	height: auto;
 }
 
 #menuList {
@@ -7,11 +51,48 @@ header {
 	background-color: red;
 	padding: 20px;
 }
+/* end HEADER */
+
+/* begin MAIN */
+main {
+	padding: 20px;
+	background-color: #014874;
+	border-top: 2px solid #35a3de;
+	border-bottom: 2px solid #04112a;	
+	box-sizing: border-box;
+}
+
+#episodeSection {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#episodeList {
+	width: 20%;
+	padding: 20px;
+	background-color: #35a3de;
+	border-top: 2px solid #014874;	
+	border-bottom: 2px solid #04112a;
+	box-sizing: border-box	
+}
+
+#episodeList ul {
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+	margin: 0;
+}
+
+#episodeList li {
+	display: inline-block;
+}
 
 article {
-	width: 80%;
+	width: 75%;
 	background-color: green;
 	padding: 20px;
+	box-sizing: border-box;
 }
 
 form {
@@ -19,7 +100,20 @@ form {
 	flex-direction: column;
 	width: 80%;
 }
+/* end MAIN */
 
+/* begin FOOTER */
 footer {
-	background-color: purple;
+	margin-top: 20px;
+	padding: 10px;
+	background-color: #35a3de;
+	border-top: 2px solid #014874;	
+	border-bottom: 2px solid #04112a;
+	box-sizing: border-box
 }
+
+footer p {
+	margin: 0;
+	padding: 0;
+}
+/* end FOOTER */

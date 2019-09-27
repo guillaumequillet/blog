@@ -9,8 +9,8 @@ class View
 
 	public function render(string $pageTitle, ?array $data) {
 		ob_start();
-		require($this->_path);
+		require($this->_path); // $data is used within this included file
 		$pageContent = ob_get_clean();
-		require('templates/template.html.php');
+		require('templates/template.html.php'); // $pageTitle and $pageContent are used inside the template
 	}
 }
