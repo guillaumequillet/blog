@@ -19,6 +19,6 @@ if (isset($_GET['controller']) && class_exists(ucfirst($_GET['controller']) . 'C
 
 if (!isset($controller) || !isset($action)) {
 	$controller = new EpisodeController();
-	$controller->unfound();
+	$controller->home();
 }
 

@@ -11,6 +11,13 @@
     <header>
         <p>Ici se trouvera un logo incroyable</p>
         <p>Nous vous souhaitons la bienvenue sur le livre numérique de Jean Forteroche !</p>
+        <nav>
+            <ul>
+                <li><a href="index.php?controller=episode&action=home">Accueil</a></li>
+                <li><a href="index.php?controller=episode&action=show&param=1">Episodes</a></li>
+                <li>Administration</li>
+            </ul>
+        </nav>
     </header>
     <main>
         <?= $pageContent ?>
