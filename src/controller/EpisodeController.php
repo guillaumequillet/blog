@@ -7,13 +7,15 @@ require_once('src/view/View.php');
 
 class EpisodeController extends Controller
 {
-	public function show(int $episodeId) {
+	public function show(?int $episodeId) {
 		$this->_model = new EpisodeModel();
 		$this->_data = Array();
 
-		$episodeData = $this->_model->getEpisode($episodeId);
+		if (!is_null($episodeId)) {
+			$episodeData = $this->_model->getEpisode($episodeId);
+		}
 
-		if ($episodeData === null) {
+		if (!isset($episodeData) || is_null($episodeData)) {
 			$this->unfound();
 		} else {
 			$this->_data['episode'] = $episodeData;

@@ -10,9 +10,9 @@ if (isset($_GET['controller']) && class_exists(ucfirst($_GET['controller']) . 'C
 	$controller = new $className;
 	
 	// if action exists
-	if (isset($_GET['action']) && method_exists($controller, $_GET['action']) && isset($_GET['param'])) {
+	if (isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
 		$action = $_GET['action'];
-		$param = (int)$_GET['param'];
+		$param = (isset($_GET['param'])) ? (int)$_GET['param'] : null;
 		$controller->$action($param);
 	}
 }
