@@ -1,19 +1,9 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1); ?>
 
-$pageTitle = "Episode" . $data['episode']['id'];
-
-ob_start();
-?>
 <article>
 	<?= $data['episode']['content'] ?>
 </article>
-<?php
-$pageContent = ob_get_clean();
 
-// Episode List section
-ob_start();
-?>
 <nav id="menuList">
     <ul >
         <?php foreach($data['episodeList'] as $episode): ?>
@@ -21,11 +11,7 @@ ob_start();
         <?php endforeach; ?>
     </ul>
 </nav>
-<?php
-$episodeListMenu = ob_get_clean();
 
-// Comments section
-ob_start(); ?>
 <h2>Ajouter un commentaire </h2>
 <form action="index.php?controller=comment&action=add&param=<?= $data['episode']['id'] ?>" method="post">
 	<label for="author">Nom d'utilisateur</label>
@@ -56,4 +42,3 @@ ob_start(); ?>
 		<hr>
 	<?php endforeach; ?>
 <?php endif; 
-$commentContent = ob_get_clean();

@@ -2,11 +2,6 @@ header {
 	background-color: yellow;
 }
 
-main {
-	display: flex;
-	flex-direction: row;
-}
-
 #menuList {
 	width: 20%;
 	background-color: red;

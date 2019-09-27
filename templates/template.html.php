@@ -13,13 +13,8 @@
         <p>Nous vous souhaitons la bienvenue sur le livre numérique de Jean Forteroche !</p>
     </header>
     <main>
-        <?= $episodeListMenu ?>
         <?= $pageContent ?>
     </main>
-
-    <section>
-        <?= $commentContent ?>
-    </section>
 
     <footer>
         <p>&copy; 2019 Jean Forteroche "Billet simple pour l'Alaska"</p>

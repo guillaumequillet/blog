@@ -1,7 +1,5 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1); ?>
 
-$pageTitle = "Episode non trouvé";
-$pageContent = "Désolé, l'épisode n'a pas été trouvé.";
-$episodeListMenu = "";
-$commentContent = "";
+<h2>Erreur d'adresse</h2>
+<p>OOOPS !</p>
+<p>L'épisode n'a pas été trouvé.</p>

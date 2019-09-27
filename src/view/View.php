@@ -7,8 +7,10 @@ class View
 		$this->_path = $path;
 	}
 
-	public function render(?array $data) {
+	public function render(string $pageTitle, ?array $data) {
+		ob_start();
 		require($this->_path);
+		$pageContent = ob_get_clean();
 		require('templates/template.html.php');
 	}
 }

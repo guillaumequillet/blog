@@ -24,12 +24,12 @@ class EpisodeController extends Controller
 			$this->_data['comments'] = $this->_model->getEpisodeComments($episodeId);
 
 			$this->_view = new View('src/view/episodeView.php');
-			$this->_view->render($this->_data);
+			$this->_view->render("Episode n° " . $episodeId, $this->_data);
 		}
 	}
 
 	public function unfound() {
 		$this->_view = new View('src/view/unfoundView.php');
-		$this->_view->render(null);
+		$this->_view->render("Episode non trouvé", null);
 	}
 }
