@@ -8,35 +8,35 @@ require_once('src/view/View.php');
 class EpisodeController extends Controller
 {
 	public function show(?int $episodeId) : void {
-		$this->_model = new EpisodeModel();
-		$this->_data = Array();
+		$this->model = new EpisodeModel();
+		$this->data = Array();
 
 		if (!is_null($episodeId)) {
-			$episodeData = $this->_model->getEpisode($episodeId);
+			$episodeData = $this->model->getEpisode($episodeId);
 		}
 
 		if (!isset($episodeData) || is_null($episodeData)) {
 			$this->unfound();
 		} else {
-			$this->_data['episode'] = $episodeData;
-			$this->_data['episodeList'] = $this->_model->getEpisodeTitles();
+			$this->data['episode'] = $episodeData;
+			$this->data['episodeList'] = $this->model->getEpisodeTitles();
 		
 			// comments section
-			$this->_model = new CommentModel();
-			$this->_data['comments'] = $this->_model->getEpisodeComments($episodeId);
+			$this->model = new CommentModel();
+			$this->data['comments'] = $this->model->getEpisodeComments($episodeId);
 
-			$this->_view = new View('src/view/episodeView.php');
-			$this->_view->render("Episode n° " . $episodeId, $this->_data);
+			$this->view = new View('src/view/episodeView.php');
+			$this->view->render("Episode n° " . $episodeId, $this->data);
 		}
 	}
 
 	public function home() {
-		$this->_view = new View('src/view/homeView.php');
-		$this->_view->render("Accueil", null);
+		$this->view = new View('src/view/homeView.php');
+		$this->view->render("Accueil", null);
 	}
 
 	public function unfound() {
-		$this->_view = new View('src/view/unfoundView.php');
-		$this->_view->render("Episode non trouvé", null);
+		$this->view = new View('src/view/unfoundView.php');
+		$this->view->render("Episode non trouvé", null);
 	}
 }

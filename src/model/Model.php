@@ -3,17 +3,17 @@ declare(strict_types=1);
 
 class Model 
 {
-	private $_pdo;
-	private $_host     = 'localhost';
-	private $_database = 'projet4';
-	private $_username = 'root';
-	private $_password = '';
+	private $pdo;
+	private $host     = 'localhost';
+	private $database = 'projet4';
+	private $username = 'root';
+	private $password = '';
 
 	public function getPDO(): PDO {
-		if (!isset($this->_pdo)) {
-			$this->_pdo = new PDO('mysql:host=' . $this->_host . ';dbname=' . $this->_database . ';charset=utf8', $this->_username, $this->_password);
+		if (!isset($this->pdo)) {
+			$this->pdo = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->database . ';charset=utf8', $this->username, $this->password);
 		}
 		var_dump("connexion db");
-		return $this->_pdo;
+		return $this->pdo;
 	}
 }
