@@ -25,6 +25,11 @@ class CommentModel extends Model
 		return ($req === false) ? null : $req->fetchAll();
 	}
 
+	public function findEpisodeIdWithCommentId(int $commentId): ?string {
+		$req = $this->getPDO()->query('SELECT episode_id FROM comments WHERE id=' . $commentId);
+		return ($req === false) ? null : $req->fetch()[0];
+	}
+
 	// for status "UNCHECKED" only
 	public function reportComment(int $id) : void {
 		$this->getPDO()->query('UPDATE comments SET status="REPORTED" WHERE id=' . $id);

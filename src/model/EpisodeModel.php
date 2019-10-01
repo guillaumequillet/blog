@@ -10,6 +10,11 @@ class EpisodeModel extends Model
 		return $res->fetchAll();
 	}
 
+	public function episodeExists(int $id) : bool {
+		$req = $this->getPDO()->query('SELECT COUNT(*) FROM episodes WHERE id=' . $id);
+		return (bool)$req->fetch();
+	}
+
 	public function findEpisode(int $id): ?array {
 		$req = $this->getPDO()->query('SELECT * FROM episodes WHERE id=' . $id);
 		$res = $req->fetch();
