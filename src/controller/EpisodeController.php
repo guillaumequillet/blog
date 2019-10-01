@@ -9,14 +9,14 @@ class EpisodeController extends Controller
 {
 	public function show(?int $episodeId) : void {
 		$this->model = new EpisodeModel();
-		$this->data = Array();
+		$this->data = [];
 
 		if (!is_null($episodeId)) {
 			$episodeData = $this->model->findEpisode($episodeId);
 		}
 
 		if (!isset($episodeData) || is_null($episodeData)) {
-			$this->unfound();
+			header('Location: index.php?controller=episode&action=unfound');
 		} else {
 			$this->data['episode'] = $episodeData;
 			$this->data['episodeList'] = $this->model->findEpisodeTitles();
