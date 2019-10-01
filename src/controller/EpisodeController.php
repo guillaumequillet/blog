@@ -8,7 +8,7 @@ require_once('src/view/View.php');
 class EpisodeController extends Controller
 {
 	public function show(?int $episodeId) : void {
-		$this->model = new EpisodeModel();
+		$this->model = new EpisodeModel($this->database);
 		$this->data = [];
 
 		if (!is_null($episodeId)) {
@@ -23,7 +23,7 @@ class EpisodeController extends Controller
 			$this->data['episodeList'] = $this->model->findEpisodeTitles();
 		
 			// comments section
-			$this->model = new CommentModel();
+			$this->model = new CommentModel($this->database);
 			$this->data['comments'] = $this->model->findEpisodeComments($episodeId);
 			$this->view->render("Episode n° " . $episodeId, 'episodeView', $this->data);
 		}

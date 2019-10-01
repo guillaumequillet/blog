@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
+
 require_once('Model.php');
 
-class EpisodeModel extends Model 
+class EpisodeModel extends Model
 {
 	// front and back-end methods
 	public function findEpisodeTitles(): ?array {

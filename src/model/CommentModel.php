@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
+
 require_once('Model.php');
 
-class CommentModel extends Model 
+class CommentModel extends Model
 {
 	// Front-End methods
 	public function addComment(string $author, string $content, int $episodeId) : void {
