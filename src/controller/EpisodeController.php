@@ -18,25 +18,22 @@ class EpisodeController extends Controller
 		if (!isset($episodeData) || is_null($episodeData)) {
 			header('Location: index.php?controller=episode&action=unfound');
 		} else {
+			// episode section
 			$this->data['episode'] = $episodeData;
 			$this->data['episodeList'] = $this->model->findEpisodeTitles();
 		
 			// comments section
 			$this->model = new CommentModel();
 			$this->data['comments'] = $this->model->findEpisodeComments($episodeId);
-
-			$this->view = new View('src/view/episodeView.php');
-			$this->view->render("Episode n° " . $episodeId, $this->data);
+			$this->view->render("Episode n° " . $episodeId, 'episodeView.php', $this->data);
 		}
 	}
 
 	public function home() : void {
-		$this->view = new View('src/view/homeView.php');
-		$this->view->render("Accueil", null);
+		$this->view->render("Accueil", 'homeview.php');
 	}
 
 	public function unfound() : void {
-		$this->view = new View('src/view/unfoundView.php');
-		$this->view->render("Episode non trouvé", null);
+		$this->view->render("Episode non trouvé", 'unfoundView.php');
 	}
 }
