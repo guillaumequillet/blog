@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 25 sep. 2019 à 09:46
+-- Généré le :  mar. 01 oct. 2019 à 08:54
 -- Version du serveur :  10.4.6-MariaDB
 -- Version de PHP :  7.3.9
 
@@ -71,7 +71,8 @@ CREATE TABLE `users` (
 -- Index pour la table `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_episode_id` (`episode_id`);
 
 --
 -- Index pour la table `episodes`
@@ -106,6 +107,16 @@ ALTER TABLE `episodes`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `fk_episode_id` FOREIGN KEY (`episode_id`) REFERENCES `episodes` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
