@@ -5,12 +5,12 @@ require_once('Model.php');
 class EpisodeModel extends Model 
 {
 	// front and back-end methods
-	public function getEpisodeTitles(): ?array {
+	public function findEpisodeTitles(): ?array {
 		$res = $this->getPDO()->query('SELECT id, title FROM episodes');
 		return $res->fetchAll();
 	}
 
-	public function getEpisode(int $id): ?array {
+	public function findEpisode(int $id): ?array {
 		$req = $this->getPDO()->query('SELECT * FROM episodes WHERE id=' . $id);
 		$res = $req->fetch();
 		return (is_bool($res) ? null : $res);

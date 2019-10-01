@@ -15,12 +15,12 @@ class CommentModel extends Model
 		)) or die(print_r($this->getPDO()->errorInfo()));
 	}
 
-	public function getComment(int $id): ?array {
+	public function findComment(int $id): ?array {
 		$req = $this->getPDO()->query('SELECT * FROM comments WHERE id='. $id);
 		return ($req === false) ? null : $req->fetch();
 	}
 
-	public function getEpisodeComments(int $episodeId): ?array {
+	public function findEpisodeComments(int $episodeId): ?array {
 		$req = $this->getPDO()->query('SELECT * FROM comments WHERE episode_id=' . $episodeId . ' ORDER BY publication_date DESC');
 		return ($req === false) ? null : $req->fetchAll();
 	}
@@ -32,12 +32,12 @@ class CommentModel extends Model
 
 
 	// Back-End methods
-	public function getAllComments(): ?array {
+	public function findAllComments(): ?array {
 		$res = $this->getPDO()->query('SELECT * FROM comments');
 		return $res->fetchAll();		
 	}
 
-	public function getReportedComments(): ?array {
+	public function findReportedComments(): ?array {
 		$res = $this->getPDO()->query('SELECT * FROM comments WHERE status="REPORTED"');
 		return $res->fetchAll();
 	}

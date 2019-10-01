@@ -12,18 +12,18 @@ class EpisodeController extends Controller
 		$this->data = Array();
 
 		if (!is_null($episodeId)) {
-			$episodeData = $this->model->getEpisode($episodeId);
+			$episodeData = $this->model->findEpisode($episodeId);
 		}
 
 		if (!isset($episodeData) || is_null($episodeData)) {
 			$this->unfound();
 		} else {
 			$this->data['episode'] = $episodeData;
-			$this->data['episodeList'] = $this->model->getEpisodeTitles();
+			$this->data['episodeList'] = $this->model->findEpisodeTitles();
 		
 			// comments section
 			$this->model = new CommentModel();
-			$this->data['comments'] = $this->model->getEpisodeComments($episodeId);
+			$this->data['comments'] = $this->model->findEpisodeComments($episodeId);
 
 			$this->view = new View('src/view/episodeView.php');
 			$this->view->render("Episode n° " . $episodeId, $this->data);
