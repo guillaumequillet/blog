@@ -6,41 +6,44 @@ class EpisodeModel extends Model
 {
 	// front and back-end methods
 	public function findEpisodeTitles(): ?array {
-		$res = $this->getPDO()->query('SELECT id, title FROM episodes');
-		return $res->fetchAll();
+		$req = $this->getPDO()->query('SELECT id, title FROM episodes');
+		return ($req === false) ? null : $req->fetchAll();
 	}
 
 	public function episodeExists(int $id) : bool {
-		$req = $this->getPDO()->query('SELECT COUNT(*) FROM episodes WHERE id=' . $id);
-		return (bool)$req->fetch();
+		$req = $this->getPDO()->prepare('SELECT COUNT(*) FROM episodes WHERE id=:id');
+		$res = $req->execute(['id' => $id]);
+		return ($res === false) ? false : (bool)$req->fetch();
 	}
 
 	public function findEpisode(int $id): ?array {
-		$req = $this->getPDO()->query('SELECT * FROM episodes WHERE id=' . $id);
-		$res = $req->fetch();
-		return (is_bool($res) ? null : $res);
+		$req = $this->getPDO()->prepare('SELECT * FROM episodes WHERE id=:id');
+		$res = $req->execute(['id' => $id]);
+		return ($res === false) ? null : $req->fetch();
 	}
 
 	// back-end methods
 	public function addEpisode(string $title, string $content, int $published): void {
 		$req = $this->getPDO()->prepare('INSERT INTO episodes(title, content, published) VALUES(:title, :content, :published)');
-		$req->execute(array(
+		$req->execute([
 			'title'     => $title,
 			'content'   => $content,
 			'published' => $published
-		)) or die(print_r($this->getPDO()->errorInfo()));
+		]);
 	}
 
-	public function editEpisode(int $episode_id, string $title, string $content, int $published): void {
-		$req = $this->getPDO()->prepare('UPDATE episodes SET title=:title, content=:content, published=:published WHERE id=' . $episode_id);
-		$req->execute(array(
+	public function editEpisode(int $id, string $title, string $content, int $published): void {
+		$req = $this->getPDO()->prepare('UPDATE episodes SET title=:title, content=:content, published=:published WHERE id=:id');
+		$req->execute([
+			'id'		=> $id,
 			'title'     => $title,
 			'content'   => $content,
 			'published' => $published
-		)) or die(print_r($this->getPDO()->errorInfo()));
+		]);
 	}
 
-	public function deleteEpisode(int $episode_id): void {
-		$this->getPDO()->query('DELETE FROM episodes WHERE id=' . $episode_id);
+	public function deleteEpisode(int $id): void {
+		$req = $this->getPDO()->prepare('DELETE FROM episodes WHERE id=:id');
+		$req->execute(['id' => $id]);
 	}
 }
