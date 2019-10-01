@@ -6,7 +6,7 @@ require_once('src/model/CommentModel.php');
 
 class CommentController extends Controller
 {
-	public function add(int $episodeId) {
+	public function add(int $episodeId) : void {
 		$this->model = new CommentModel();
 
 		if (isset($_POST['author']) && isset($_POST['content'])) {
@@ -17,7 +17,7 @@ class CommentController extends Controller
 		header('Location: index.php?controller=episode&action=show&param=' . $episodeId);
 	}
 
-	public function report(int $commentId) {
+	public function report(int $commentId) : void {
 		$this->model = new CommentModel();
 		$this->model->reportComment($commentId);
 		$episode = $this->model->getComment($commentId);

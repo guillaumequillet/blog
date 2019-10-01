@@ -5,7 +5,7 @@ require_once('Model.php');
 class EpisodeModel extends Model 
 {
 	// front and back-end methods
-	public function getEpisodeTitles(): array {
+	public function getEpisodeTitles(): ?array {
 		$res = $this->getPDO()->query('SELECT id, title FROM episodes');
 		return $res->fetchAll();
 	}
@@ -17,7 +17,7 @@ class EpisodeModel extends Model
 	}
 
 	// back-end methods
-	public function addEpisode(string $title, string $content, int $published): bool {
+	public function addEpisode(string $title, string $content, int $published): void {
 		$req = $this->getPDO()->prepare('INSERT INTO episodes(title, content, published) VALUES(:title, :content, :published)');
 		$req->execute(array(
 			'title'     => $title,
@@ -26,7 +26,7 @@ class EpisodeModel extends Model
 		)) or die(print_r($this->getPDO()->errorInfo()));
 	}
 
-	public function editEpisode(int $episode_id, string $title, string $content, int $published): bool {
+	public function editEpisode(int $episode_id, string $title, string $content, int $published): void {
 		$req = $this->getPDO()->prepare('UPDATE episodes SET title=:title, content=:content, published=:published WHERE id=' . $episode_id);
 		$req->execute(array(
 			'title'     => $title,
@@ -35,7 +35,7 @@ class EpisodeModel extends Model
 		)) or die(print_r($this->getPDO()->errorInfo()));
 	}
 
-	public function deleteEpisode(int $episode_id): bool {
+	public function deleteEpisode(int $episode_id): void {
 		$this->getPDO()->query('DELETE FROM episodes WHERE id=' . $episode_id);
 	}
 }

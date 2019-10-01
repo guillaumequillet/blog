@@ -5,7 +5,7 @@ require_once('Model.php');
 class CommentModel extends Model 
 {
 	// Front-End methods
-	public function addComment(string $author, string $content, int $episodeId) {
+	public function addComment(string $author, string $content, int $episodeId) : void {
 		$req = $this->getPDO()->prepare('INSERT INTO comments(author, content, episode_id, status) VALUES(:author, :content, :episodeId, :status)');
 		$req->execute(array(
 			'author'  	 => $author,
@@ -26,29 +26,29 @@ class CommentModel extends Model
 	}
 
 	// for status "UNCHECKED" only
-	public function reportComment(int $id) {
+	public function reportComment(int $id) : void {
 		$this->getPDO()->query('UPDATE comments SET status="REPORTED" WHERE id=' . $id);
 	}
 
 
 	// Back-End methods
-	public function getAllComments(): array {
+	public function getAllComments(): ?array {
 		$res = $this->getPDO()->query('SELECT * FROM comments');
 		return $res->fetchAll();		
 	}
 
-	public function getReportedComments(): array {
+	public function getReportedComments(): ?array {
 		$res = $this->getPDO()->query('SELECT * FROM comments WHERE status="REPORTED"');
 		return $res->fetchAll();
 	}
 
 	// for whatever status between "REPORTED" and "UNCHECKED"
-	public function deleteComment(int $id) {
+	public function deleteComment(int $id) : void {
 		$this->getPDO()->query('DELETE FROM comments WHERE id=' . $id);
 	}
 
 	// for status "REPORTED"
-	public function approveComment(int $id) {
+	public function approveComment(int $id) : void {
 		$this->getPDO()->query('UPDATE comments SET status="APPROVED" WHERE id=' . $id);
 	}
 }

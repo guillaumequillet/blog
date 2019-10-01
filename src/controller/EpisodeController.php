@@ -30,12 +30,12 @@ class EpisodeController extends Controller
 		}
 	}
 
-	public function home() {
+	public function home() : void {
 		$this->view = new View('src/view/homeView.php');
 		$this->view->render("Accueil", null);
 	}
 
-	public function unfound() {
+	public function unfound() : void {
 		$this->view = new View('src/view/unfoundView.php');
 		$this->view->render("Episode non trouvé", null);
 	}
