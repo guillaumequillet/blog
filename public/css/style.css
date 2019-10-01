@@ -100,10 +100,15 @@ form {
 	flex-direction: column;
 	width: 80%;
 }
+
+input, textarea {
+	margin-bottom: 20px;
+}
 /* end MAIN */
 
 /* begin FOOTER */
 footer {
+	text-align: center;
 	margin-top: 20px;
 	padding: 10px;
 	background-color: #35a3de;

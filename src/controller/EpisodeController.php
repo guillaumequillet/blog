@@ -7,7 +7,7 @@ require_once('src/view/View.php');
 
 class EpisodeController extends Controller
 {
-	public function show(?int $episodeId) {
+	public function show(?int $episodeId) : void {
 		$this->_model = new EpisodeModel();
 		$this->_data = Array();
 

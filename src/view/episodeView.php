@@ -10,6 +10,8 @@
 	</nav>
 
 	<article>
+		<h2><?= $data['episode']['title'] ?></h2>
+		<p>Publié le <?= $data['episode']['publication_date'] ?></p>
 		<?= $data['episode']['content'] ?>
 	</article>
 </section>

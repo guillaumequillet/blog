@@ -13,6 +13,7 @@ class Model
 		if (!isset($this->_pdo)) {
 			$this->_pdo = new PDO('mysql:host=' . $this->_host . ';dbname=' . $this->_database . ';charset=utf8', $this->_username, $this->_password);
 		}
+		var_dump("connexion db");
 		return $this->_pdo;
 	}
 }
