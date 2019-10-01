@@ -25,15 +25,15 @@ class EpisodeController extends Controller
 			// comments section
 			$this->model = new CommentModel();
 			$this->data['comments'] = $this->model->findEpisodeComments($episodeId);
-			$this->view->render("Episode n° " . $episodeId, 'episodeView.php', $this->data);
+			$this->view->render("Episode n° " . $episodeId, 'episodeView', $this->data);
 		}
 	}
 
 	public function home() : void {
-		$this->view->render("Accueil", 'homeview.php');
+		$this->view->render("Accueil", 'homeView');
 	}
 
 	public function unfound() : void {
-		$this->view->render("Episode non trouvé", 'unfoundView.php');
+		$this->view->render("Episode non trouvé", 'unfoundView');
 	}
 }

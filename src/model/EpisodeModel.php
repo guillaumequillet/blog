@@ -18,8 +18,9 @@ class EpisodeModel extends Model
 
 	public function findEpisode(int $id): ?array {
 		$req = $this->getPDO()->prepare('SELECT * FROM episodes WHERE id=:id');
-		$res = $req->execute(['id' => $id]);
-		return ($res === false) ? null : $req->fetch();
+		$req->execute(['id' => $id]);
+		$res = $req->fetch();
+		return ($res === false) ? null : $res;
 	}
 
 	// back-end methods
