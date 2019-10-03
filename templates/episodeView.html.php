@@ -3,16 +3,42 @@
 	<nav id="episodeList">
 		<h3>Liste des Episodes</h3>
 	    <ul >
-	        <?php foreach($data['episodeList'] as $episode): ?>
+	        <?php foreach($data['episodeList'] as $key => $episode): ?>
+	        <?php if ($episode['id'] === $data['episode']['id']) $currentEpisodeKey = $key; ?>
 	        <li><a href=index.php?controller=episode&action=show&param=<?= $episode['id'] ?>><?= $episode['title'] ?></a></li>
 	        <?php endforeach; ?>
 	    </ul>
 	</nav>
 
+	<?php
+	    $previousEpisodeKey = ($currentEpisodeKey > 0) ? $currentEpisodeKey - 1 : null;
+	    $nextEpisodeKey     = ($currentEpisodeKey < sizeof($data['episodeList']) - 1) ? $currentEpisodeKey + 1 : null;
+	?>
+
 	<article>
+		<select id="episodeListDropDown">
+			<?php foreach($data['episodeList'] as $episode): ?>
+			<option value="<?= $episode['id'] ?>" <?= $episode['id'] === $data['episode']['id'] ? "selected" : "" ?>><?= $episode['title'] ?></option>
+			<?php endforeach; ?>
+		</select>
+
 		<h2><?= $data['episode']['title'] ?></h2>
 		<p>Publié le <?= $data['episode']['publication_date'] ?></p>
 		<?= $data['episode']['content'] ?>
+		<nav id="episodeControls">
+			<ul>
+				<?php if (!is_null($previousEpisodeKey)): ?>
+				<li>
+					<a href="index.php?controller=episode&action=show&param=<?= $data['episodeList'][$previousEpisodeKey]['id'] ?>">Episode précédent</a>
+				</li>
+				<?php endif; ?>
+				<?php if (!is_null($nextEpisodeKey)): ?>
+				<li>
+					<a href="index.php?controller=episode&action=show&param=<?= $data['episodeList'][$nextEpisodeKey]['id'] ?>">Episode suivant</a>
+				</li>
+				<?php endif; ?>
+			</ul>
+		</nav>
 	</article>
 </section>
 

@@ -25,5 +25,7 @@
     <footer>
         <p>&copy; 2019 Jean Forteroche <strong>"Billet simple pour l'Alaska"</strong>. Tous droits réservés. Reproduction totale ou partielle interdite sans autorisation.</p>
     </footer>
+
+    <script src="public/js/script.js"></script>
 </body>
 </html>

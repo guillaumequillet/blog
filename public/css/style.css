@@ -95,6 +95,17 @@ article {
 	box-sizing: border-box;
 }
 
+#episodeControls ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0;
+}
+
+#episodeControls li {
+	display: inline-block;
+}
+
 form {
 	display: flex;
 	flex-direction: column;
