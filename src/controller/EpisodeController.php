@@ -30,10 +30,10 @@ class EpisodeController extends Controller
 	}
 
 	public function home() : void {
-		$this->view->render("Accueil", 'homeView');
+		$this->view->render('Accueil', 'homeView');
 	}
 
 	public function unfound() : void {
-		$this->view->render("Episode non trouvé", 'unfoundView');
+		$this->view->render('Episode non trouvé', 'unfoundView');
 	}
 }

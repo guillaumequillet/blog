@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-require_once('public/SuperglobalManager.php');
-require_once('public/Database.php');
+require_once('src/tools/SuperglobalManager.php');
+require_once('src/tools/Database.php');
 
 class Controller 
 {
