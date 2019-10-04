@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">	
-    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <title><?= $pageTitle ?></title>
 </head>
 <body>
     <header>
-        <a href="index.php?controller=episode&action=home"><img src="public/images/header.png" alt="Alaska paysage"></a>
+        <a href="index.php?controller=episode&action=home"><img src="images/header.png" alt="Alaska paysage"></a>
         <nav id="mainMenu">
             <ul>
                 <li><a href="index.php?controller=episode&action=home">Accueil</a></li>
@@ -26,6 +26,6 @@
         <p>&copy; 2019 Jean Forteroche <strong>"Billet simple pour l'Alaska"</strong>. Tous droits réservés. Reproduction totale ou partielle interdite sans autorisation.</p>
     </footer>
 
-    <script src="public/js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
