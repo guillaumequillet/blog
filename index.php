@@ -1,6 +1,9 @@
 <?php
 declare(strict_types=1);
 
+// use App\Controller\EpisodeController;
+use App\Controller\CommentController;
+
 require_once('src/controller/EpisodeController.php');
 require_once('src/controller/CommentController.php');
 

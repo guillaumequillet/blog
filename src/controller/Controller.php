@@ -1,8 +1,14 @@
 <?php
 declare(strict_types=1);
 
-require_once('src/tools/SuperglobalManager.php');
-require_once('src/tools/Database.php');
+namespace App\Controller;
+
+use App\View\View;
+use App\Tool\Database;
+
+require_once('src/tool/SuperglobalManager.php');
+require_once('src/tool/Database.php');
+require_once('src/view/View.php');
 
 class Controller 
 {

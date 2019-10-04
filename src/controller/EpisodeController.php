@@ -1,9 +1,15 @@
 <?php
 declare(strict_types=1);
 
+use App\Controller\Controller;
+
+// namespace App\Controller;
+
+use App\Model\EpisodeModel;
+use App\Model\CommentModel;
+
 require_once('src/controller/Controller.php');
 require_once('src/model/EpisodeModel.php');
-require_once('src/view/View.php');
 
 class EpisodeController extends Controller
 {
