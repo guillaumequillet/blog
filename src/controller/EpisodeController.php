@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use App\Controller\Controller;
-
-// namespace App\Controller;
+namespace App\Controller;
 
 use App\Model\EpisodeModel;
 use App\Model\CommentModel;
