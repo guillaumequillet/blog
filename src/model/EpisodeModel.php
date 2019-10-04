@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-require_once('Model.php');
-
 class EpisodeModel extends Model
 {
 	// front and back-end methods

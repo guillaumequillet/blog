@@ -6,10 +6,6 @@ namespace App\Controller;
 use App\View\View;
 use App\Tool\Database;
 
-require_once('src/tool/SuperglobalManager.php');
-require_once('src/tool/Database.php');
-require_once('src/view/View.php');
-
 class Controller 
 {
 	protected $database;

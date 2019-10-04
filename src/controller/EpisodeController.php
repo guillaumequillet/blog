@@ -6,9 +6,6 @@ namespace App\Controller;
 use App\Model\EpisodeModel;
 use App\Model\CommentModel;
 
-require_once('src/controller/Controller.php');
-require_once('src/model/EpisodeModel.php');
-
 class EpisodeController extends Controller
 {
 	public function show(?int $episodeId) : void {

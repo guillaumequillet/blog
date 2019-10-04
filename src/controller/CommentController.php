@@ -3,8 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-require_once('src/controller/Controller.php');
-require_once('src/model/CommentModel.php');
+use App\Model\EpisodeModel;
+use App\Model\CommentModel;
+use App\Tool\SuperglobalManager;
 
 class CommentController extends Controller
 {
