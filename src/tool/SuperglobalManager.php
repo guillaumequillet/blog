@@ -11,4 +11,22 @@ class SuperglobalManager {
 	public function findPostVariable(string $key) : ?string {
 		return isset($_POST[$key]) ? htmlentities($_POST[$key]) : null;
 	}
+
+	public function hasSessionVariable(string $key) : bool {
+		return isset($_SESSION[$key]);
+	}
+
+	public function findSessionVariable(string $key) : ?string {
+		return isset($_SESSION[$key]) ? htmlentities($_POST[$key]) : null;
+	}
+
+	public function setSessionVariable(string $key, string $value) : void {
+		$_SESSION[$key] = $value;
+	}
+
+	public function deleteSessionVariable(string $key) {
+		if (isset($_SESSION[$key])) {
+			unset($_SESSION[$key]);
+		}
+	}
 }

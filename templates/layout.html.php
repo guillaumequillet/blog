@@ -14,7 +14,7 @@
             <ul>
                 <li><a href="index.php?controller=episode&action=home">Accueil</a></li>
                 <li><a href="index.php?controller=episode&action=show&param=1">Episodes</a></li>
-                <li><a href="#">Administration</a></li>
+                <li><a href="index.php?controller=admin&action=login">Administration</a></li>
             </ul>
         </nav>
     </header>

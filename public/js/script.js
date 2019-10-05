@@ -8,5 +8,5 @@ if (dropDownListElmt != null) {
 
 
 // we want to remove default episode menu if javascript is enabled
-let episodeListElmt = document.querySelector("#episodeList");
-episodeList.parentNode.removeChild(episodeListElmt);
+// let episodeListElmt = document.querySelector("#episodeList");
+// episodeList.parentNode.removeChild(episodeListElmt);
