@@ -1,12 +1,51 @@
 body {
-	width: 80%;
+	padding: 0;
+	margin: 0;
+	width: 100%;
 	margin: auto;
-	background-color: #d9f1f9;
+	background: white url(/images/background.png) no-repeat left top fixed;
+	background-size: cover;
+}
+
+.button {
+	background-color: black;
+	color: white;
+	margin: 15px;
+	padding: 15px;
+	border-radius: 15px;
+	text-decoration: none;
+}
+
+.button:hover {
+	color: #5aa7e5;
+	cursor: pointer;
 }
 
 /* begin HEADER */
 header {
+	background-color: white;
+	width: 100%;
+	height: auto;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
+}
 
+header h1, h2, h3 {
+	font-family: 'Calligraffitti', cursive;
+}
+
+header h1 {
+	font-size: 2.2em;
+	color: black;
+}
+
+header h2 {
+	font-size: 0.9em;
+	color: #3b8cce;
 }
 
 #mainMenu ul {
@@ -16,50 +55,31 @@ header {
 
 #mainMenu li {
 	display: inline-block;
-	background-color: #014874;
-	border-top: 2px solid #35a3de;
-	border-bottom: 2px solid #04112a;
-	width: 30%;
-	text-align: center;
-	padding: 10px;
-	box-sizing: border-box;
-}
-
-#mainMenu li:hover {
-	background-color: #35a3de;
-	border-top: 2px solid #014874;	
-	border-bottom: 2px solid #04112a;
+	padding: 0 20px;
 }
 
 #mainMenu a {
 	font-size: 1.3em;
-	color: white;
+	color: #cccccc;
 	text-decoration: none;
+	text-transform: uppercase;
 }
 
 #mainMenu a:hover {
-	text-decoration: underline;
-}
-
-header img {
-	width: 100%;
-	height: auto;
-}
-
-#menuList {
-	width: 20%;
-	background-color: red;
-	padding: 20px;
+	color: black;
 }
 /* end HEADER */
 
 /* begin MAIN */
 main {
+	min-height: 300px;
+	width: 80%;
 	padding: 20px;
-	background-color: #014874;
-	border-top: 2px solid #35a3de;
-	border-bottom: 2px solid #04112a;	
+	margin: 40px auto;
+	padding: 20px;
+	background-color: white;
 	box-sizing: border-box;
+	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
 }
 
 #episodeSection {
@@ -71,10 +91,9 @@ main {
 #episodeList {
 	width: 20%;
 	padding: 20px;
-	background-color: #35a3de;
-	border-top: 2px solid #014874;	
-	border-bottom: 2px solid #04112a;
-	box-sizing: border-box	
+	background-color: rgba(255, 255, 255, 0.8);
+	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
+	box-sizing: border-box;
 }
 
 #episodeList ul {
@@ -90,9 +109,14 @@ main {
 
 article {
 	width: 75%;
-	background-color: green;
+	background-color: white;
 	padding: 20px;
+	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
 	box-sizing: border-box;
+}
+
+#episodeControls {
+	margin-top: 30px;
 }
 
 #episodeControls ul {
@@ -106,26 +130,30 @@ article {
 	display: inline-block;
 }
 
-form {
+#commentForm {
 	display: flex;
 	flex-direction: column;
 	width: 80%;
+	margin: 0 auto;
 }
 
 input, textarea {
 	margin-bottom: 20px;
+}
+
+.comment {
+	padding: 10px;
+	margin: 10px;
+	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
 }
 /* end MAIN */
 
 /* begin FOOTER */
 footer {
 	text-align: center;
-	margin-top: 20px;
 	padding: 10px;
-	background-color: #35a3de;
-	border-top: 2px solid #014874;	
-	border-bottom: 2px solid #04112a;
-	box-sizing: border-box
+	background-color: white;
+	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
 }
 
 footer p {
