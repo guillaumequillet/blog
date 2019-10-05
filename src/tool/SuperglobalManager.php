@@ -21,7 +21,7 @@ class SuperglobalManager {
 	}
 
 	public function setSessionVariable(string $key, string $value) : void {
-		$_SESSION[$key] = $value;
+		$_SESSION[$key] = htmlentities($value);
 	}
 
 	public function deleteSessionVariable(string $key) {
