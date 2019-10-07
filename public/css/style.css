@@ -3,7 +3,7 @@ body {
 	margin: 0;
 	width: 100%;
 	margin: auto;
-	background: white url(/images/background.png) no-repeat left top fixed;
+	background: white url(../images/background.png) no-repeat left top fixed;
 	background-size: cover;
 }
 

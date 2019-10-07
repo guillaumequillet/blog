@@ -22,7 +22,7 @@
     </header>
     <main>
         <ul>
-            <li>Paramètres connexion</li>
+            <li><a href="index.php?controller=admin&action=user">Paramètres connexion</a></li>
             <li>Gestion des commentaires</li>
             <li>Gestion des épisodes</li>
         </ul>

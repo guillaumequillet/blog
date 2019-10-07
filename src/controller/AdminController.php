@@ -24,6 +24,7 @@ class AdminController extends Controller
 
 	}
 
+	// Connexion
 	public function login(?int $param = null): void {
 		// if admin is already logged in, we redirect to admin menu
 		if ($this->superglobalManager->hasSessionVariable('admin')) {
@@ -60,7 +61,9 @@ class AdminController extends Controller
 		$this->superglobalManager->deleteSessionVariable('admin');
 		header('location: index.php?controller=admin&action=login&param=1');
 	}
+	// end Connexion
 
+	// USER admin menu
 	public function user(): void {
 		// if admin is not already logged in, we redirect to login menu
 		if (!$this->superglobalManager->hasSessionVariable('admin')) {
