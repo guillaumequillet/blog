@@ -21,7 +21,15 @@
         </nav>
     </header>
     <main>
+        <ul>
+            <li>Paramètres connexion</li>
+            <li>Gestion des commentaires</li>
+            <li>Gestion des épisodes</li>
+        </ul>
         <?= $pageContent ?>
+        <p>
+            <a href="index.php?controller=admin&action=logout">Se déconnecter</a>
+        </p>
     </main>
 
     <footer>
