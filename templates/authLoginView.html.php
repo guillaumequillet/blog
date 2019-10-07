@@ -14,7 +14,7 @@
 <p>Vous avez été déconnecté(e).</p>
 <?php endif; ?>
 
-<form method="post" action="index.php?controller=admin&action=validateLogin">
+<form method="post" action="index.php?controller=auth&action=validateLogin">
 	<label for="username">Username</label>
 	<input type="text" name="username" id="username" required>
 	<label for="password">Password</label>

@@ -4,6 +4,9 @@ require 'vendor/autoload.php';
 
 use App\Controller\EpisodeController;
 use App\Controller\CommentController;
+use App\Tool\Superglobalmanager;
+
+$superglobalmanager = new Superglobalmanager();
 
 // if controller exists
 if (isset($_GET['controller']) && class_exists("App\\Controller\\" . ucfirst($_GET['controller']) . 'Controller')) {

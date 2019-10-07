@@ -16,19 +16,19 @@
             <ul>
                 <li><a href="index.php?controller=episode&action=home">Accueil</a></li>
                 <li><a href="index.php?controller=episode&action=show&param=1">Episodes</a></li>
-                <li><a href="index.php?controller=admin&action=login">Administration</a></li>
+                <li><a href="index.php?controller=auth&action=login">Administration</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <ul>
             <li><a href="index.php?controller=admin&action=user">Paramètres connexion</a></li>
-            <li>Gestion des commentaires</li>
-            <li>Gestion des épisodes</li>
+            <li><a href="index.php?controller=admin&action=comments">Modérer les commentaires</a></li>
+            <li><a href="index.php?controller=admin&action=episodes">Gérer les épisodes</a></li>
         </ul>
         <?= $pageContent ?>
         <p>
-            <a href="index.php?controller=admin&action=logout">Se déconnecter</a>
+            <a href="index.php?controller=auth&action=logout">Se déconnecter</a>
         </p>
     </main>
 
