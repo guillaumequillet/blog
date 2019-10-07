@@ -4,6 +4,15 @@ declare(strict_types=1);
 namespace App\Tool;
 
 class SuperglobalManager {
+	public function hasGetVariable(string $key) : bool {
+		return isset($_GET[$key]);
+	}
+
+	public function findGetVariable(string $key) : ?string {
+		return isset($_GET[$key]) ? htmlentities($_GET[$key]) : null;
+	}
+
+
 	public function hasPostVariable(string $key) : bool {
 		return isset($_POST[$key]);
 	}
