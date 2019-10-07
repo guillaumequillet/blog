@@ -17,7 +17,7 @@ class SuperglobalManager {
 	}
 
 	public function findSessionVariable(string $key) : ?string {
-		return isset($_SESSION[$key]) ? htmlentities($_POST[$key]) : null;
+		return isset($_SESSION[$key]) ? htmlentities($_SESSION[$key]) : null;
 	}
 
 	public function setSessionVariable(string $key, string $value) : void {

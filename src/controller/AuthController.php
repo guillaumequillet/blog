@@ -7,8 +7,6 @@ use App\Tool\SuperglobalManager;
 use App\Model\UserModel;
 use App\View\View;
 
-session_start();
-
 class AuthController extends Controller 
 {
 	private $superglobalManager;
