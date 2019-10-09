@@ -53,4 +53,3 @@ class AuthController extends Controller
 		header('location: index.php?controller=auth&action=login&param=1');
 	}
 }
-
