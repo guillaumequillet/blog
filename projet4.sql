@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 01 oct. 2019 à 08:54
+-- Généré le :  mer. 09 oct. 2019 à 20:56
 -- Version du serveur :  10.4.6-MariaDB
 -- Version de PHP :  7.3.9
 
@@ -64,6 +64,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `password`) VALUES
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99');
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -106,7 +113,7 @@ ALTER TABLE `episodes`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Contraintes pour les tables déchargées
