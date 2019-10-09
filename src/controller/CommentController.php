@@ -29,7 +29,7 @@ class CommentController extends Controller
 	public function report(int $commentId) : void {
 		$this->model = new CommentModel($this->database);
 		$this->model->reportComment($commentId);
-		$episodeId = $this->model->findEpisodeIdWithCommentId($commentId); // ligne inutile
-		header('Location: index.php?controller=episode&action=show&param=' . $episodeId); 
+		header('Location: index.php?controller=episode&action=show&param=' 
+			. $this->model->findEpisodeIdWithCommentId($commentId)); 
 	}
 }

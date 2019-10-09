@@ -21,15 +21,17 @@ if ($superglobalManager->hasGetVariable('controller') && class_exists("App\\Cont
 		$action = 'login';
 		$param = 3;
 		$controller->$action($param);
-	} else {
-		$className = "App\\Controller\\" . ucfirst($_GET['controller']) . 'Controller';
-		$controller = new $className;
-		// if action exists
-		if ($superglobalManager->hasGetVariable('action') && method_exists($controller, $_GET['action'])) {
-			$action = $superglobalManager->findGetVariable('action');
-			$param  = $superglobalManager->hasGetVariable('param') ? (int)$superglobalManager->findGetVariable('param') : null;
-			$controller->$action($param);
-		}
+		exit();
+	} 
+
+	$className = "App\\Controller\\" . ucfirst($_GET['controller']) . 'Controller';
+	$controller = new $className;
+	// if action exists
+	if ($superglobalManager->hasGetVariable('action') && method_exists($controller, $_GET['action'])) {
+		$action = $superglobalManager->findGetVariable('action');
+		$param  = $superglobalManager->hasGetVariable('param') ? (int)$superglobalManager->findGetVariable('param') : null;
+		$controller->$action($param);
+		exit();
 	}
 }
 

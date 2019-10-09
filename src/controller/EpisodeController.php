@@ -18,16 +18,17 @@ class EpisodeController extends Controller
 
 		if (!isset($episodeData) || is_null($episodeData)) {
 			header('Location: index.php?controller=episode&action=unfound');
-		} else {
-			// episode section
-			$this->data['episode'] = $episodeData;
-			$this->data['episodeList'] = $this->model->findEpisodeTitles();
-		
-			// comments section
-			$this->model = new CommentModel($this->database);
-			$this->data['comments'] = $this->model->findEpisodeComments($episodeId);
-			$this->view->render("Episode n° " . $episodeId, 'episodeView', $this->data);
+			exit();
 		}
+		
+		// episode section
+		$this->data['episode'] = $episodeData;
+		$this->data['episodeList'] = $this->model->findEpisodeTitles();
+	
+		// comments section
+		$this->model = new CommentModel($this->database);
+		$this->data['comments'] = $this->model->findEpisodeComments($episodeId);
+		$this->view->render("Episode n° " . $episodeId, 'episodeView', $this->data);
 	}
 
 	public function home() : void {

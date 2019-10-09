@@ -16,36 +16,38 @@ class AuthController extends Controller
 		$this->superglobalManager = new SuperglobalManager();
 	}
 
-		// Connexion
+	// Connexion
 	public function login(?int $param = null): void {
 		// if admin is already logged in, we redirect to admin menu
 		if ($this->superglobalManager->hasSessionVariable('admin')) {
 			header('location: index.php?controller=admin&action=user');
-		} else {
-			$this->data['param'] = $param;
-			$this->view->render('Admin Login', 'authLoginView', $this->data);
-		}
+			exit();
+		} 
+
+		$this->data['param'] = $param;
+		$this->view->render('Admin Login', 'authLoginView', $this->data);
 	}	
 
 	public function validateLogin(): void {
 		// if admin is already logged in, we redirect to admin menu
 		if ($this->superglobalManager->hasSessionVariable('admin')) {
 			header('location: index.php?controller=admin&action=user');
+			exit();
 		}
-		else {		
-			$this->model = new UserModel($this->database);
-			$username = $this->superglobalManager->findPostVariable('username');
-			$password = $this->superglobalManager->findPostVariable('password');
 
-			// if connexion is successful
-			if ($this->model->validateLogin($username, $password)) {
-				$this->superglobalManager->setSessionVariable('admin', 'logged');
-				header('location: index.php?controller=admin&action=user');
-			}	
-			else {			
-				header('location: index.php?controller=auth&action=login&param=0');
-			}
-		}
+		$this->model = new UserModel($this->database);
+		$username = $this->superglobalManager->findPostVariable('username');
+		$password = $this->superglobalManager->findPostVariable('password');
+
+		// if connexion is successful
+		if ($this->model->validateLogin($username, $password)) {
+			$this->superglobalManager->setSessionVariable('admin', 'logged');
+			header('location: index.php?controller=admin&action=user');
+			exit();
+		}	
+
+		// if connexion failed
+		header('location: index.php?controller=auth&action=login&param=0');
 	}
 
 	public function logout(): void {
