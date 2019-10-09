@@ -11,7 +11,7 @@ class EpisodeModel extends Model
 		return ($req === false) ? null : $req->fetchAll();
 	}
 
-	public function episodeExists(int $id) : bool {
+	public function episodeExists(int $id): bool {
 		$req = $this->getPDO()->prepare('SELECT COUNT(*) FROM episodes WHERE id=:id');
 		$res = $req->execute(['id' => $id]);
 		return ($res === false) ? false : (bool)$req->fetch();
@@ -22,6 +22,16 @@ class EpisodeModel extends Model
 		$req->execute(['id' => $id]);
 		$res = $req->fetch();
 		return ($res === false) ? null : $res;
+	}
+
+	public function findEpisodeExcerpts(int $page = 0): ?array {
+		$episodesPerPage = 5;
+		$req = $this->getPDO()->prepare('SELECT id, title, LEFT(content, :excerptSize) AS contentExcerpt FROM episodes LIMIT :qty OFFSET :start');
+		$req->bindValue('excerptSize', 50, \PDO::PARAM_INT);
+		$req->bindValue(':qty', $episodesPerPage, \PDO::PARAM_INT);
+		$req->bindValue(':start', $episodesPerPage * $page, \PDO::PARAM_INT);
+		$res = $req->execute();
+		return ($res === false) ? null : $req->fetchAll();
 	}
 
 	// back-end methods

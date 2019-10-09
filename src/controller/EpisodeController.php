@@ -31,6 +31,14 @@ class EpisodeController extends Controller
 		$this->view->render("Episode n° " . $episodeId, 'episodeView', $this->data);
 	}
 
+	public function showList(?int $page = null) : void {
+		$this->model = new EpisodeModel($this->database);
+		$this->data = [];
+
+		$this->data['episodeExcerptsList'] = $this->model->findEpisodeExcerpts();
+		$this->view->render('Episode Liste', 'episodeListView', $this->data);
+	}
+
 	public function home() : void {
 		$this->view->render('Accueil', 'homeView');
 	}

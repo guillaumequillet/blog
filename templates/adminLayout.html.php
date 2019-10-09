@@ -15,7 +15,7 @@
         <nav id="mainMenu">
             <ul>
                 <li><a href="index.php?controller=episode&action=home">Accueil</a></li>
-                <li><a href="index.php?controller=episode&action=show&param=1">Episodes</a></li>
+                <li><a href="index.php?controller=episode&action=showList">Episodes</a></li>
                 <li><a href="index.php?controller=auth&action=login">Administration</a></li>
             </ul>
         </nav>
