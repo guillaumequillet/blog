@@ -1,5 +1,7 @@
 <?php declare(strict_types=1); ?>
 
+<h2>Connexion à l'Administration</h2>
+
 <?php 
 	// if connexion failed
 	if (isset($data['param']) && $data['param'] === 0): 
@@ -21,7 +23,7 @@
 <p>Vous devez être connecté(e) pour accéder à cet espace.</p>
 <?php endif; ?>
 
-<form method="post" action="index.php?controller=auth&action=validateLogin">
+<form id="loginForm" method="post" action="index.php?controller=auth&action=validateLogin">
 	<label for="username">Nom d'utilisateur</label>
 	<input type="text" name="username" id="username" required>
 	<label for="password">Mot de passe</label>

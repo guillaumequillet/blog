@@ -128,7 +128,7 @@ article {
 	display: inline-block;
 }
 
-#commentForm {
+#commentForm, #loginForm {
 	display: flex;
 	flex-direction: column;
 	width: 80%;

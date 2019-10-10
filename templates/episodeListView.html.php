@@ -7,6 +7,7 @@
 		<?= $episode['contentExcerpt'] ?>...<a href="index.php?controller=episode&action=show&param=<?= $episode['id'] ?>">[voir la suite]</a>
 	</p>
 </div>
+<hr>
 <?php endforeach; ?>
 
 <div>
