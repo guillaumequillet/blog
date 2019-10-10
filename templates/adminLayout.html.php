@@ -10,22 +10,17 @@
 </head>
 <body>
     <header>
-        <h1>Billet Simple pour l'Alaska</h1>
-        <h2>Un Roman épisodique par Jean Forteroche</h2>
+        <h1>Administration</h1>
         <nav id="mainMenu">
             <ul>
-                <li><a href="index.php?controller=episode&action=home">Accueil</a></li>
-                <li><a href="index.php?controller=episode&action=showList">Episodes</a></li>
-                <li><a href="index.php?controller=auth&action=login">Administration</a></li>
+                <li><a href="index.php?controller=admin&action=user">Paramètres connexion</a></li>
+                <li><a href="index.php?controller=admin&action=comments">Modérer les commentaires</a></li>
+                <li><a href="index.php?controller=admin&action=episodes">Gérer les épisodes</a></li>
             </ul>
         </nav>
     </header>
+    
     <main>
-        <ul>
-            <li><a href="index.php?controller=admin&action=user">Paramètres connexion</a></li>
-            <li><a href="index.php?controller=admin&action=comments">Modérer les commentaires</a></li>
-            <li><a href="index.php?controller=admin&action=episodes">Gérer les épisodes</a></li>
-        </ul>
         <?= $pageContent ?>
         <p>
             <a href="index.php?controller=auth&action=logout">Se déconnecter</a>

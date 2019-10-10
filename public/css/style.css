@@ -1,8 +1,6 @@
 body {
 	padding: 0;
 	margin: 0;
-	width: 100%;
-	margin: auto;
 	background: white url(../images/background.png) no-repeat left top fixed;
 	background-size: cover;
 }
@@ -72,14 +70,14 @@ header h2 {
 
 /* begin MAIN */
 main {
-	min-height: 300px;
 	width: 80%;
+	height: 100%;
 	padding: 20px;
 	margin: 40px auto;
 	padding: 20px;
 	background-color: white;
-	box-sizing: border-box;
 	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
+	box-sizing: border-box;
 }
 
 #episodeSection {
@@ -154,6 +152,7 @@ footer {
 	padding: 10px;
 	background-color: white;
 	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
+	box-sizing: border-box;
 }
 
 footer p {
