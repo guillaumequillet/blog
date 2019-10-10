@@ -31,11 +31,35 @@ class EpisodeController extends Controller
 		$this->view->render("Episode n° " . $episodeId, 'episodeView', $this->data);
 	}
 
-	public function showList(?int $page = null) : void {
+	public function showList(?int $page = 0) : void {
+		$episodesPerPage = 5;
+
+		if (is_null($page)) {
+			$page = 0;
+		}
+
 		$this->model = new EpisodeModel($this->database);
 		$this->data = [];
 
-		$this->data['episodeExcerptsList'] = $this->model->findEpisodeExcerpts();
+		$this->data['episodeExcerptsList'] = $this->model->findEpisodeExcerpts($page, $episodesPerPage);
+		if (empty($this->data['episodeExcerptsList'])) {
+			header('Location: index.php?controller=episode&action=unfound');
+			exit();
+		}
+
+		$this->data['currentPage'] = $page;
+
+		if ($this->data['currentPage'] > 0) {
+			$this->data['previousPage'] = $this->data['currentPage'] - 1;
+		}
+
+		$episodeCount = $this->model->findEpisodeCount();
+		$maxPage = (int)(ceil($episodeCount / $episodesPerPage));
+
+		if ($this->data['currentPage'] < $maxPage - 1) {
+			$this->data['nextPage'] = $this->data['currentPage'] + 1;
+		}
+
 		$this->view->render('Episode Liste', 'episodeListView', $this->data);
 	}
 

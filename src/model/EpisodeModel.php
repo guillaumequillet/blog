@@ -17,6 +17,11 @@ class EpisodeModel extends Model
 		return ($res === false) ? false : (bool)$req->fetch();
 	}
 
+	public function findEpisodeCount(): int {
+		$req = $this->getPDO()->query('SELECT COUNT(*) FROM episodes');
+		return (int)$req->fetch()[0];
+	}
+
 	public function findEpisode(int $id): ?array {
 		$req = $this->getPDO()->prepare('SELECT * FROM episodes WHERE id=:id');
 		$req->execute(['id' => $id]);
@@ -24,8 +29,7 @@ class EpisodeModel extends Model
 		return ($res === false) ? null : $res;
 	}
 
-	public function findEpisodeExcerpts(int $page = 0): ?array {
-		$episodesPerPage = 5;
+	public function findEpisodeExcerpts(int $page, int $episodesPerPage): ?array {
 		$req = $this->getPDO()->prepare('SELECT id, title, LEFT(content, :excerptSize) AS contentExcerpt FROM episodes LIMIT :qty OFFSET :start');
 		$req->bindValue('excerptSize', 50, \PDO::PARAM_INT);
 		$req->bindValue(':qty', $episodesPerPage, \PDO::PARAM_INT);

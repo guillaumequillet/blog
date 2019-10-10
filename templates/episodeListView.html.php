@@ -8,3 +8,18 @@
 	</p>
 </div>
 <?php endforeach; ?>
+
+<div>
+	<h4>Pages</h4>
+	<p>
+		<?php if (isset($data['previousPage'])): ?>
+		<a href="index.php?controller=episode&action=showList&param=<?= $data['previousPage'] ?>"> <?= $data['previousPage'] ?></a>
+		<?php endif; ?>
+
+		<?php echo $data['currentPage'] . " "; ?>
+
+		<?php if (isset($data['nextPage'])): ?>
+		<a href="index.php?controller=episode&action=showList&param=<?= $data['nextPage'] ?>"> <?= $data['nextPage'] ?></a>
+		<?php endif; ?>
+	</p>
+</div>
