@@ -1,4 +1,5 @@
 <?php declare(strict_types=1); ?>
+<h2>Liste des épisodes</h2>
 
 <?php foreach ($data['episodeExcerptsList'] as $episode): ?>
 <div>

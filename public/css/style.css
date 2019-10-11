@@ -128,7 +128,11 @@ article {
 	display: inline-block;
 }
 
+<<<<<<< HEAD
 #commentForm, #loginForm {
+=======
+#commentForm, #loginForm, #userForm {
+>>>>>>> adminUser
 	display: flex;
 	flex-direction: column;
 	width: 80%;
@@ -136,7 +140,16 @@ article {
 }
 
 input, textarea {
-	margin-bottom: 20px;
+	margin: 10px auto;
+	width: 90%;
+}
+
+fieldset {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	padding: 20px;
+	margin: 20px auto;
 }
 
 .comment {
