@@ -5,6 +5,10 @@ body {
 	background-size: cover;
 }
 
+.errorText {
+	color: red;
+}
+
 .button {
 	background-color: black;
 	color: white;
@@ -128,9 +132,10 @@ article {
 	display: inline-block;
 }
 
-#commentForm, #loginForm, #adminUser {
+#commentForm, #loginForm, #userForm {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	width: 80%;
 	margin: 0 auto;
 }
@@ -138,6 +143,10 @@ article {
 input, textarea {
 	margin: 10px auto;
 	width: 90%;
+}
+
+input[type=submit] {
+	width: auto;
 }
 
 fieldset {
