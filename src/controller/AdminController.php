@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Model\UserModel;
+use App\Model\CommentModel;
 use App\View\View;
 use App\Tool\Superglobalmanager;
 
@@ -46,8 +47,23 @@ class AdminController extends Controller
 		header('location: index.php?controller=admin&action=user&param=0');
 	}
 
-	public function comments(): void {
-		$this->view->render('Modération des commentaires', 'adminCommentsView');
+	public function comments(?int $reportedOnly = 1): void {
+		$this->model = new CommentModel($this->database);
+		$this->data['comments'] = ((bool)$reportedOnly) ? $this->model->findReportedComments() : $this->model->findAllComments();
+		$this->data['param'] = $reportedOnly;
+		$this->view->render('Modération des commentaires', 'adminCommentsView', $this->data);
+	}
+
+	public function deleteComment(int $id): void {
+		$this->model = new CommentModel($this->database);
+		$this->model->deleteComment($id);
+		header('location: index.php?controller=admin&action=comments');
+	}
+
+	public function approveComment(int $id): void {
+		$this->model = new CommentModel($this->database);
+		$this->model->approveComment($id);
+		header('location: index.php?controller=admin&action=comments');
 	}
 
 	public function episodes(): void {
