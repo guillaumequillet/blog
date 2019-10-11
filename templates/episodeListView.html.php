@@ -1,4 +1,5 @@
 <?php declare(strict_types=1); ?>
+<h2>Liste des épisodes</h2>
 
 <?php foreach ($data['episodeExcerptsList'] as $episode): ?>
 <div>
@@ -7,6 +8,7 @@
 		<?= $episode['contentExcerpt'] ?>...<a href="index.php?controller=episode&action=show&param=<?= $episode['id'] ?>">[voir la suite]</a>
 	</p>
 </div>
+<hr>
 <?php endforeach; ?>
 
 <div>
