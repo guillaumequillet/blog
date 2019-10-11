@@ -1,10 +1,6 @@
 <?php declare(strict_types=1); ?>
 
-<<<<<<< HEAD
 <h2>Connexion à l'Administration</h2>
-=======
-<h2>Accès à l'Administration</h2>
->>>>>>> adminUser
 
 <?php 
 	// if connexion failed

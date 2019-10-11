@@ -128,11 +128,7 @@ article {
 	display: inline-block;
 }
 
-<<<<<<< HEAD
-#commentForm, #loginForm {
-=======
-#commentForm, #loginForm, #userForm {
->>>>>>> adminUser
+#commentForm, #loginForm, #adminUser {
 	display: flex;
 	flex-direction: column;
 	width: 80%;
