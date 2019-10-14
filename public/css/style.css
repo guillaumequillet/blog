@@ -5,6 +5,15 @@ body {
 	background-size: cover;
 }
 
+a {
+	color: #847e7e;
+	text-decoration: none;
+}
+
+ a:hover {
+	color: black;
+}
+
 .errorText {
 	color: red;
 	text-align: center;
@@ -62,7 +71,7 @@ header h2 {
 }
 
 #mainMenu a {
-	font-size: 1.3em;
+	font-size: 1.1em;
 	color: #cccccc;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -159,9 +168,21 @@ fieldset {
 }
 
 .comment {
+	position: relative;
 	padding: 10px;
-	margin: 10px;
+	margin: 40px 10px 80px 10px;
 	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
+}
+
+.comment p:first-of-type {
+	color: #5a5a5a;
+	position: absolute;
+	top: -40px;
+}
+
+.comment p:last-of-type {
+	position: absolute;
+	bottom: -40px;
 }
 /* end MAIN */
 

@@ -50,8 +50,12 @@ class AdminController extends Controller
 	public function comments(?int $reportedOnly = 1): void {
 		$this->model = new CommentModel($this->database);
 		$this->data['comments'] = ((bool)$reportedOnly) ? $this->model->findReportedComments() : $this->model->findAllComments();
-		$this->data['param'] = $reportedOnly;
+		$this->data['param'] = is_null($reportedOnly) ? 1 : $reportedOnly;
 		$this->view->render('Modération des commentaires', 'adminCommentsView', $this->data);
+	}
+
+	public function deleteReportedComment(int $id): void {
+		
 	}
 
 	public function deleteComment(int $id): void {

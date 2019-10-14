@@ -1,18 +1,15 @@
 <?php declare(strict_types=1); ?>
 
-<nav>
-	<ul>
-		<li><a href="index.php?controller=admin&action=comments&param=1">Modérer les commentaires signalés</a></li>
-		<li><a href="index.php?controller=admin&action=comments&param=0">Modérer tous les commentaires</a></li>
-	</ul>
-</nav>
-
 <?php if ($data['param'] === 0): ?>
 <h2>Gestion des commentaires</h2>
 <?php endif; ?>
 
 <?php if ($data['param'] === 1): ?>
 <h2>Gestion des commentaires signalés</h2>
+<?php endif; ?>
+
+<?php if (empty($data['comments'])): ?>
+<p>Il n'y a pas de commentaire à modérer.</p>
 <?php endif; ?>
 
 <?php foreach ($data['comments'] as $comment): ?>

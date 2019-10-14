@@ -53,8 +53,9 @@
 	<?php if ($data['comments'] != null): ?>
 		<?php foreach($data['comments'] as $comment): ?>
 			<div class="comment">
-				<p>Auteur : <?= $comment['author'] ?> Message : <?= $comment['content'] ?></p>
-				<P>
+				<p>Posté par <strong><?= $comment['author'] ?></strong> le <?= $comment['publication_date'] ?></p>
+				<p><?= $comment['content'] ?></p>
+				<p>
 				<?php
 					switch ($comment['status']) {
 						case 'UNCHECKED':
