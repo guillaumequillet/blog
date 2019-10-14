@@ -47,15 +47,21 @@ class AdminController extends Controller
 		header('location: index.php?controller=admin&action=user&param=0');
 	}
 
-	public function comments(?int $reportedOnly = 1): void {
+	public function comments(?int $reportedOnly = 0): void {
 		$this->model = new CommentModel($this->database);
 		$this->data['comments'] = ((bool)$reportedOnly) ? $this->model->findReportedComments() : $this->model->findAllComments();
-		$this->data['param'] = is_null($reportedOnly) ? 1 : $reportedOnly;
+		$this->data['param'] = is_null($reportedOnly) ? 0 : $reportedOnly;
 		$this->view->render('Modération des commentaires', 'adminCommentsView', $this->data);
 	}
 
 	public function deleteReportedComment(int $id): void {
-		
+		$this->deleteComment($id);
+		header('location: index.php?controller=admin&action=comments&param=1');
+	}
+
+	public function approveReportedComment(int $id): void {
+		$this->approveComment($id);
+		header('location: index.php?controller=admin&action=comments&param=1');
 	}
 
 	public function deleteComment(int $id): void {

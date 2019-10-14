@@ -21,12 +21,24 @@
 		<?php switch ($comment['status']) {
 			case 'REPORTED':
 			case 'UNCHECKED':
-				echo "<a href='index.php?controller=admin&action=deleteComment&param=" . $comment['id'] . "'>Effacer</a>";
-				echo " ";
-				echo "<a href='index.php?controller=admin&action=approveComment&param=" . $comment['id'] . "'>Approuver</a>";
+				if ($data['param'] === 0) {
+					echo "<a href='index.php?controller=admin&action=deleteComment&param=" . $comment['id'] . "'>Effacer</a>";
+					echo " ";
+					echo "<a href='index.php?controller=admin&action=approveComment&param=" . $comment['id'] . "'>Approuver</a>";				
+				}
+				if ($data['param'] === 1) {
+					echo "<a href='index.php?controller=admin&action=deleteReportedComment&param=" . $comment['id'] . "'>Effacer</a>";
+					echo " ";
+					echo "<a href='index.php?controller=admin&action=approveReportedComment&param=" . $comment['id'] . "'>Approuver</a>";		
+				}
 				break;
 			case 'APPROVED':
-				echo "<a href='index.php?controller=admin&action=deleteComment&param=" . $comment['id'] . "'>Effacer</a>";			
+				if ($data['param'] === 0) {
+					echo "<a href='index.php?controller=admin&action=deleteComment&param=" . $comment['id'] . "'>Effacer</a>";			
+				}
+				if ($data['param'] === 1) {
+					echo "<a href='index.php?controller=admin&action=deleteReportedComment&param=" . $comment['id'] . "'>Effacer</a>";			
+				}
 				break;
 		}
 		?>
