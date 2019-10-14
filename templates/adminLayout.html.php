@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title><?= $pageTitle ?></title>
 </head>
-<body>
+<body id="bodyAdmin">
     <header>
         <h1>Administration</h1>
         <p>

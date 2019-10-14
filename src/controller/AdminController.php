@@ -67,13 +67,13 @@ class AdminController extends Controller
 	public function deleteComment(int $id): void {
 		$this->model = new CommentModel($this->database);
 		$this->model->deleteComment($id);
-		header('location: index.php?controller=admin&action=comments');
+		header('location: index.php?controller=admin&action=comments&param=0');
 	}
 
 	public function approveComment(int $id): void {
 		$this->model = new CommentModel($this->database);
 		$this->model->approveComment($id);
-		header('location: index.php?controller=admin&action=comments');
+		header('location: index.php?controller=admin&action=comments&param=0');
 	}
 
 	public function episodes(): void {

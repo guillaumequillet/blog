@@ -5,6 +5,11 @@ body {
 	background-size: cover;
 }
 
+#bodyAdmin {
+	background: white url(../images/admin-bg.png) no-repeat left top fixed;
+	background-size: cover;
+}
+
 a {
 	color: #847e7e;
 	text-decoration: none;
