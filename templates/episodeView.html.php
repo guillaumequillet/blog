@@ -50,6 +50,12 @@
 	</form>
 
 	<h2>Commentaires</h2>
+	<?php if (empty($data['comments'])): ?>
+	<p>
+		Aucun commentaire n'a été posté pour cet épisode.
+	</p>
+	<?php endif; ?>
+
 	<?php if ($data['comments'] != null): ?>
 		<?php foreach($data['comments'] as $comment): ?>
 			<div class="comment">
