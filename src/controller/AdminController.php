@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Model\UserModel;
 use App\Model\CommentModel;
+use App\Model\EpisodeModel;
 use App\View\View;
 use App\Tool\Superglobalmanager;
 
@@ -77,6 +78,18 @@ class AdminController extends Controller
 	}
 
 	public function episodes(): void {
-		$this->view->render('Gestion des épisodes', 'adminEpisodesView');
+		$this->model = new EpisodeModel($this->database);
+		$this->data['episodeData'] = $this->model->findEpisodeTitles();
+		$this->view->render('Gestion des épisodes', 'adminEpisodesView', $this->data);
+	}
+
+	public function editEpisode(?int $id = null): void {
+
+	}
+
+	public function deleteEpisode(int $id): void {
+		$this->model = new EpisodeModel($this->database);
+		$this->model->deleteEpisode($id);
+		header('location: index.php?controller=admin&action=episodes');
 	}
 }
