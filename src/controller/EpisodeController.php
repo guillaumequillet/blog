@@ -13,7 +13,7 @@ class EpisodeController extends Controller
 		$this->data = [];
 
 		if (!is_null($episodeId)) {
-			$episodeData = $this->model->findEpisode($episodeId);
+			$episodeData = $this->model->findPublishedEpisode($episodeId);
 		}
 
 		if (!isset($episodeData) || is_null($episodeData)) {
@@ -24,7 +24,7 @@ class EpisodeController extends Controller
 		// episode section
 		$this->data['episode']            = $episodeData;
 		$this->data['episode']['content'] = html_entity_decode($this->data['episode']['content']);
-		$this->data['episodeList']        = $this->model->findEpisodeTitles();
+		$this->data['episodeList']        = $this->model->findPublishedEpisodeTitles();
 	
 		// comments section
 		$this->model = new CommentModel($this->database);
