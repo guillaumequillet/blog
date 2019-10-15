@@ -7,6 +7,11 @@
     <link href="https://fonts.googleapis.com/css?family=Calligraffitti&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title><?= $pageTitle ?></title>
+
+    <script src='https://cdn.tiny.cloud/1/hvo1ed06n0kpv30hc1bl0sm7zcxah2135wz5icrg2adetb59/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({ selector: '#episodeContent' });
+    </script>
 </head>
 <body id="bodyAdmin">
     <header>

@@ -84,7 +84,42 @@ class AdminController extends Controller
 	}
 
 	public function editEpisode(?int $id = null): void {
+		$this->model = new EpisodeModel($this->database);
+		$this->superglobalmanager = new Superglobalmanager();
 
+		if (!is_null($id)) {
+			$episode = $this->model->findEpisode($id);
+			if (!is_null($episode)) {
+				$this->data['episode'] = $episode;
+				$this->data['episode']['content'] = html_entity_decode($this->data['episode']['content']);
+			}
+		}
+ 		$this->view->render('Gestion de l\'épisode', 'adminEpisodeEditView', $this->data);
+	}
+
+	public function updateEpisode(): void {
+		$this->model = new EpisodeModel($this->database);
+		$this->superglobalmanager = new Superglobalmanager();
+
+		if ($this->superglobalmanager->hasPostVariable('episodeTitle')
+			&& $this->superglobalmanager->hasPostVariable('episodeContent')) {
+
+			$id        = $this->superglobalmanager->findPostVariable('episodeId');
+			$title     = $this->superglobalmanager->findPostVariable('episodeTitle');
+			$content   = $this->superglobalmanager->findPostVariable('episodeContent');
+			$published = $this->superglobalmanager->hasPostVariable('published');
+
+			switch ($id) {
+				case '': // if no id is set : new episode
+					$this->model->addEpisode($title, $content, (int)$published);
+					break;
+				
+				default: // update if id is set
+					$this->model->editEpisode((int)$id, $title, $content, (int)$published);
+					break;
+			}
+		}
+		header('location: index.php?controller=admin&action=episodes');
 	}
 
 	public function deleteEpisode(int $id): void {

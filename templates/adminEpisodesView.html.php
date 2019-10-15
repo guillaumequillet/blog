@@ -3,6 +3,7 @@
 <h2>Gestion des épisodes</h2>
 
 <a href="index.php?controller=admin&action=editEpisode">Ajouter un épisode</a>
+<hr>
 <?php foreach($data['episodeData'] as $episode): ?>
 <div>
 	<h3><?= $episode['title'] ?></h3>

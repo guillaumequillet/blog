@@ -22,8 +22,9 @@ class EpisodeController extends Controller
 		}
 		
 		// episode section
-		$this->data['episode'] = $episodeData;
-		$this->data['episodeList'] = $this->model->findEpisodeTitles();
+		$this->data['episode']            = $episodeData;
+		$this->data['episode']['content'] = html_entity_decode($this->data['episode']['content']);
+		$this->data['episodeList']        = $this->model->findEpisodeTitles();
 	
 		// comments section
 		$this->model = new CommentModel($this->database);

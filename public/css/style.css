@@ -77,7 +77,7 @@ header h2 {
 
 #mainMenu a {
 	font-size: 1.1em;
-	color: #cccccc;
+	color: #847e7e;
 	text-decoration: none;
 	text-transform: uppercase;
 }
@@ -147,7 +147,7 @@ article {
 	display: inline-block;
 }
 
-#commentForm, #loginForm, #userForm {
+#commentForm, #loginForm, #userForm, #episodeForm {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
