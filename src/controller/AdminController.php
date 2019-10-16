@@ -122,6 +122,13 @@ class AdminController extends Controller
 		header('location: index.php?controller=admin&action=episodes');
 	}
 
+	public function previewEpisode(int $id): void {
+		$this->model = new EpisodeModel($this->database);
+		$this->data['episode'] = $this->model->findEpisode($id);
+		$this->data['preview'] = true;
+ 		$this->view->render('Aperçu l\'épisode', 'episodeView', $this->data);
+	}
+
 	public function deleteEpisode(int $id): void {
 		$this->model = new EpisodeModel($this->database);
 		$this->model->deleteEpisode($id);

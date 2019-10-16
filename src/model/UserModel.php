@@ -6,9 +6,9 @@ namespace App\Model;
 class UserModel extends Model
 {
 	public function validateLogin(string $username, string $password): bool {
-		$req = $this->getPDO()->prepare('SELECT COUNT(*) FROM users WHERE name=:username AND password=:password');
-		$req->execute(['username' => $username, 'password' => md5($password)]);
-		return (bool) $req->fetch()[0];
+		$req = $this->getPDO()->prepare('SELECT password FROM users WHERE name=:username');
+		$req->execute(['username' => $username]);
+		return password_verify($password, $req->fetch()[0]);
 	}
 
 	public function validUsername(string $username): bool {
@@ -23,11 +23,11 @@ class UserModel extends Model
 
 	public function validPassword(string $password): bool {
 		$req = $this->getPDO()->query('SELECT password FROM users LIMIT 1');
-		return ($req->fetch()[0] === md5($password));
+		return (password_verify($password, $req->fetch()[0]));
 	}
 
 	public function setPassword(string $password): void {
 		$req = $this->getPDO()->prepare('UPDATE users SET password=:password WHERE id=1');
-		$req->execute(['password' => md5($password)]);
+		$req->execute(['password' => password_hash($password, PASSWORD_DEFAULT)]);
 	}
 }

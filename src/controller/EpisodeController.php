@@ -33,7 +33,7 @@ class EpisodeController extends Controller
 	}
 
 	public function showList(?int $page = 0) : void {
-		$episodesPerPage = 5;
+		$episodesPerPage = 1;
 
 		if (is_null($page)) {
 			$page = 0;
