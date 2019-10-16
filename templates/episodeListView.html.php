@@ -2,11 +2,12 @@
 <h2>Liste des épisodes</h2>
 
 <?php foreach ($data['episodeExcerptsList'] as $episode): ?>
-<div>
+<div class="episode">
     <h3><?= $episode['title'] ?></h3>
     <p>
-        <?= html_entity_decode($episode['contentExcerpt']) ?>...<a href="index.php?controller=episode&action=show&param=<?= $episode['id'] ?>">[voir la suite]</a>
+        <?= html_entity_decode($episode['contentExcerpt']) ?>...
     </p>
+    <a href="index.php?controller=episode&action=show&param=<?= $episode['id'] ?>" class="button">voir la suite</a>
 </div>
 <hr>
 <?php endforeach; ?>

@@ -46,7 +46,7 @@ class EpisodeModel extends Model
     }
 
     public function findEpisodeTitles(): ?array {
-        $req = $this->getPDO()->query('SELECT id, title FROM episodes');
+        $req = $this->getPDO()->query('SELECT id, title, published, publication_date FROM episodes');
         return ($req === false) ? null : $req->fetchAll();
     }
 

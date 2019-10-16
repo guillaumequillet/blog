@@ -19,6 +19,20 @@ a {
     color: black;
 }
 
+table {
+  border-collapse: collapse;
+  margin: 30px auto;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+td {
+    text-align: center;
+    padding: 20px;
+}
+
 .errorText {
     color: red;
     text-align: center;
@@ -51,8 +65,9 @@ header {
     box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
 }
 
-header h1, h2, h3 {
+h1, h2, h3 {
     font-family: 'Calligraffitti', cursive;
+    text-align: center;
 }
 
 header h1 {
@@ -124,7 +139,7 @@ main {
     display: inline-block;
 }
 
-article {
+article, .episode {
     width: 100%;
     background-color: white;
     padding: 20px;
