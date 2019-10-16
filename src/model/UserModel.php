@@ -6,9 +6,14 @@ namespace App\Model;
 class UserModel extends Model
 {
     public function validateLogin(string $username, string $password): bool {
-        $req = $this->getPDO()->prepare('SELECT password FROM users WHERE name=:username');
-        $req->execute(['username' => $username]);
-        return password_verify($password, $req->fetch()[0]);
+        $req = $this->getPDO()->prepare('SELECT password FROM users WHERE binary name=:username');
+        $res = $req->execute(['username' => $username]);
+
+        if ($res) {
+            $hashed_pwd = $req->fetch()[0];
+            return is_null($hashed_pwd) ? false : password_verify($password, $hashed_pwd);
+        }
+        return false;
     }
 
     public function validUsername(string $username): bool {
