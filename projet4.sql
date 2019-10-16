@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 09 oct. 2019 à 20:56
+-- Généré le :  mer. 16 oct. 2019 à 18:59
 -- Version du serveur :  10.4.6-MariaDB
 -- Version de PHP :  7.3.9
 
@@ -68,7 +68,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99');
+(1, 'admin', '$2y$10$wiRM1JeZRtB3r7ZqbkIqsO9emerzWUXUvOPejadkxSlJMi61E5tze');
 
 --
 -- Index pour les tables déchargées
