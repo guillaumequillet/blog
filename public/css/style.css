@@ -1,207 +1,207 @@
 body {
-	margin: 0;
-	padding: 0;
-	background: white url(../images/background.png) no-repeat left top fixed;
-	background-size: cover;
+    margin: 0;
+    padding: 0;
+    background: white url(../images/background.png) no-repeat left top fixed;
+    background-size: cover;
 }
 
 #bodyAdmin {
-	background: white url(../images/admin-bg.png) no-repeat left top fixed;
-	background-size: cover;
+    background: white url(../images/admin-bg.png) no-repeat left top fixed;
+    background-size: cover;
 }
 
 a {
-	color: #847e7e;
-	text-decoration: none;
+    color: #847e7e;
+    text-decoration: none;
 }
 
  a:hover {
-	color: black;
+    color: black;
 }
 
 .errorText {
-	color: red;
-	text-align: center;
+    color: red;
+    text-align: center;
 }
 
 .button {
-	background-color: black;
-	color: white;
-	margin: 15px;
-	padding: 15px;
-	border-radius: 15px;
-	text-decoration: none;
+    background-color: black;
+    color: white;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    text-decoration: none;
 }
 
 .button:hover {
-	color: #5aa7e5;
-	cursor: pointer;
+    color: #5aa7e5;
+    cursor: pointer;
 }
 
 /* begin HEADER */
 header {
-	background-color: white;
-	width: 100%;
-	height: auto;
-	z-index: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
+    background-color: white;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
 }
 
 header h1, h2, h3 {
-	font-family: 'Calligraffitti', cursive;
+    font-family: 'Calligraffitti', cursive;
 }
 
 header h1 {
-	font-size: 2.2em;
-	color: black;
+    font-size: 2.2em;
+    color: black;
 }
 
 header h2 {
-	font-size: 0.9em;
-	color: #3b8cce;
+    font-size: 0.9em;
+    color: #3b8cce;
 }
 
 #mainMenu ul {
-	display: flex;
-	justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 #mainMenu li {
-	display: inline-block;
-	padding: 0 20px;
+    display: inline-block;
+    padding: 0 20px;
 }
 
 #mainMenu a {
-	font-size: 1.1em;
-	color: #847e7e;
-	text-decoration: none;
-	text-transform: uppercase;
+    font-size: 1.1em;
+    color: #847e7e;
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
 #mainMenu a:hover {
-	color: black;
+    color: black;
 }
 /* end HEADER */
 
 /* begin MAIN */
 main {
-	width: 80%;
-	height: 100%;
-	padding: 20px;
-	margin: 40px auto;
-	padding: 20px;
-	background-color: white;
-	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
-	box-sizing: border-box;
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
+    box-sizing: border-box;
 }
 
 #episodeSection {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 #episodeList {
-	width: 20%;
-	padding: 20px;
-	background-color: rgba(255, 255, 255, 0.8);
-	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
-	box-sizing: border-box;
+    width: 20%;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
+    box-sizing: border-box;
 }
 
 #episodeList ul {
-	display: flex;
-	flex-direction: column;
-	padding: 0;
-	margin: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
 }
 
 #episodeList li {
-	display: inline-block;
+    display: inline-block;
 }
 
 article {
-	width: 100%;
-	background-color: white;
-	padding: 20px;
-	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
-	box-sizing: border-box;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
+    box-sizing: border-box;
 }
 
 #episodeControls {
-	margin-top: 30px;
+    margin-top: 30px;
 }
 
 #episodeControls ul {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
 }
 
 #episodeControls li {
-	display: inline-block;
+    display: inline-block;
 }
 
 #commentForm, #loginForm, #userForm, #episodeForm {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 80%;
-	margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
 }
 
 input, textarea {
-	margin: 10px auto;
-	width: 90%;
+    margin: 10px auto;
+    width: 90%;
 }
 
 input[type=submit] {
-	width: auto;
+    width: auto;
 }
 
 fieldset {
-	display: flex;
-	flex-direction: column;
-	width: 80%;
-	padding: 20px;
-	margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 20px;
+    margin: 20px auto;
 }
 
 .comment {
-	position: relative;
-	padding: 10px;
-	margin: 40px 10px 80px 10px;
-	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
+    position: relative;
+    padding: 10px;
+    margin: 40px 10px 80px 10px;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
 }
 
 .comment p:first-of-type {
-	color: #5a5a5a;
-	position: absolute;
-	top: -40px;
+    color: #5a5a5a;
+    position: absolute;
+    top: -40px;
 }
 
 .comment p:last-of-type {
-	position: absolute;
-	bottom: -40px;
+    position: absolute;
+    bottom: -40px;
 }
 /* end MAIN */
 
 /* begin FOOTER */
 footer {
-	text-align: center;
-	padding: 10px;
-	background-color: white;
-	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
-	box-sizing: border-box;
+    text-align: center;
+    padding: 10px;
+    background-color: white;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.4); 
+    box-sizing: border-box;
 }
 
 footer p {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 /* end FOOTER */

@@ -8,13 +8,13 @@ use App\Tool\Database;
 
 class Controller 
 {
-	protected $database;
-	protected $model;
-	protected $view;
-	protected $data;
+    protected $database;
+    protected $model;
+    protected $view;
+    protected $data;
 
-	public function __construct() {
-		$this->database = new Database();
-		$this->view = new View();
-	}
+    public function __construct() {
+        $this->database = new Database();
+        $this->view = new View();
+    }
 }
