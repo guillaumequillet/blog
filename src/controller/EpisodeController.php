@@ -36,7 +36,7 @@ class EpisodeController extends Controller
 		$episodesPerPage = 1;
 
 		if (is_null($page)) {
-			$page = 0;
+			$page = 1;
 		}
 
 		$this->model = new EpisodeModel($this->database);
@@ -50,14 +50,14 @@ class EpisodeController extends Controller
 
 		$this->data['currentPage'] = $page;
 
-		if ($this->data['currentPage'] > 0) {
+		if ($this->data['currentPage'] > 1) {
 			$this->data['previousPage'] = $this->data['currentPage'] - 1;
 		}
 
 		$episodeCount = $this->model->findEpisodeCount();
 		$maxPage = (int)(ceil($episodeCount / $episodesPerPage));
 
-		if ($this->data['currentPage'] < $maxPage - 1) {
+		if ($this->data['currentPage'] < $maxPage) {
 			$this->data['nextPage'] = $this->data['currentPage'] + 1;
 		}
 

@@ -20,7 +20,7 @@ class AuthController extends Controller
 	public function login(?int $param = null): void {
 		// if admin is already logged in, we redirect to admin menu
 		if ($this->superglobalManager->hasSessionVariable('admin')) {
-			header('location: index.php?controller=admin&action=user');
+			header('location: index.php?controller=admin&action=episodes');
 			exit();
 		} 
 
@@ -31,7 +31,7 @@ class AuthController extends Controller
 	public function validateLogin(): void {
 		// if admin is already logged in, we redirect to admin menu
 		if ($this->superglobalManager->hasSessionVariable('admin')) {
-			header('location: index.php?controller=admin&action=user');
+			header('location: index.php?controller=admin&action=episodes');
 			exit();
 		}
 
@@ -42,7 +42,7 @@ class AuthController extends Controller
 		// if connexion is successful
 		if ($this->model->validateLogin($username, $password)) {
 			$this->superglobalManager->setSessionVariable('admin', 'logged');
-			header('location: index.php?controller=admin&action=user');
+			header('location: index.php?controller=admin&action=episodes');
 			exit();
 		}	
 

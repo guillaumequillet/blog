@@ -21,10 +21,10 @@
         </p>
         <nav id="mainMenu">
             <ul>
-                <li><a href="index.php?controller=admin&action=user">Connexion</a></li>
+                <li><a href="index.php?controller=admin&action=episodes">Episodes</a></li>
                 <li><a href="index.php?controller=admin&action=comments&param=1">Commentaires signalés</a></li>
                 <li><a href="index.php?controller=admin&action=comments&param=0">Tous les commentaires</a></li>
-                <li><a href="index.php?controller=admin&action=episodes">Episodes</a></li>
+                <li><a href="index.php?controller=admin&action=user">Connexion</a></li>
             </ul>
         </nav>
     </header>

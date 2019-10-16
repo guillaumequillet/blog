@@ -30,10 +30,9 @@ class EpisodeModel extends Model
 	}
 
 	public function findEpisodeExcerpts(int $page, int $episodesPerPage): ?array {
-		$req = $this->getPDO()->prepare('SELECT id, title, LEFT(content, :excerptSize) AS contentExcerpt FROM episodes WHERE published=1 LIMIT :qty OFFSET :start');
-		$req->bindValue('excerptSize', 50, \PDO::PARAM_INT);
+		$req = $this->getPDO()->prepare('SELECT id, title, content AS contentExcerpt FROM episodes WHERE published=1 LIMIT :qty OFFSET :start');
 		$req->bindValue(':qty', $episodesPerPage, \PDO::PARAM_INT);
-		$req->bindValue(':start', $episodesPerPage * $page, \PDO::PARAM_INT);
+		$req->bindValue(':start', $episodesPerPage * ($page - 1), \PDO::PARAM_INT);
 		$res = $req->execute();
 		return ($res === false) ? null : $req->fetchAll();
 	}
