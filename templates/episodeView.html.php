@@ -44,8 +44,10 @@
     <form action="index.php?controller=comment&action=add&param=<?= $data['episode']['id'] ?>" method="post" id="commentForm">
         <label for="author">Nom d'utilisateur</label>
         <input name="author" id="author" required>
+        <p id="remainingCharsAuthor"></p>
         <label for="content">Message</label>
         <textarea name="content" id="content" required></textarea>
+        <p id="remainingCharsComment"></p>
         <input type="submit" value="Envoyer le commentaire" class="button">
         <input type="hidden" name="token" id="token" value="<?= $data['token'] ?>">
     </form>
