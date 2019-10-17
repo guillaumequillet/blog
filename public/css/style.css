@@ -33,6 +33,10 @@ td {
     padding: 20px;
 }
 
+td a {
+    display: block;
+}
+
 .errorText {
     color: red;
     text-align: center;
