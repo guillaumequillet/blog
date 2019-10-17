@@ -1,4 +1,11 @@
-<?php declare(strict_types=1); ?>
+<?php declare(strict_types=1);
+
+$statusLabels = [
+    'REPORTED'  => 'Signalé',
+    'APPROVED'  => 'Approuvé',
+    'UNCHECKED' => 'Non vérifié'
+]
+?>
 
 <?php if ($data['param'] === 0): ?>
 <h2>Gestion des commentaires</h2>
@@ -17,7 +24,8 @@
     <p>Auteur : <?= $comment['author'] ?> posté le <?= $comment['publication_date'] ?></p>
     <p><?= $comment['content'] ?></p>
     <p>
-        Statut : <?= $comment['status'] ?>
+        Statut : <?= $statusLabels[$comment['status']] ?>
+
         <?php switch ($comment['status']) {
             case 'REPORTED':
             case 'UNCHECKED':
