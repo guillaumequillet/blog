@@ -10,8 +10,10 @@ class CommentModel extends Model
     // Front-End methods
     public function addComment(string $author, string $content, int $episodeId) : void {
         $this->superglobalManager = new SuperglobalManager();
+        $postToken    = $this->superglobalManager->findPostVariable('token');
+        $sessionToken = $this->superglobalManager->findSessionVariable('token');
 
-        if ($this->superglobalManager->hasPostVariable('token') && $this->superglobalManager->hasSessionVariable('token') && $this->superglobalManager->findPostVariable('token') === $this->superglobalManager->findSessionVariable('token')) {
+        if ($postToken === $sessionToken && !is_null($postToken)) {
             $req = $this->getPDO()->prepare('INSERT INTO comments(author, content, episode_id, status) VALUES(:author, :content, :episodeId, :status)');
             $req->execute([
                 'author'     => $author,
@@ -19,6 +21,7 @@ class CommentModel extends Model
                 'episodeId'  => $episodeId,
                 'status'     => 'UNCHECKED'
             ]);
+
         }
     }
 
