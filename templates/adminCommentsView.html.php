@@ -19,37 +19,50 @@ $statusLabels = [
 <p>Il n'y a pas de commentaire à modérer.</p>
 <?php endif; ?>
 
-<?php foreach ($data['comments'] as $comment): ?>
-<div class="comment">
-    <p>Auteur : <?= $comment['author'] ?> posté le <?= $comment['publication_date'] ?></p>
-    <p><?= $comment['content'] ?></p>
-    <p>
-        Statut : <?= $statusLabels[$comment['status']] ?>
-
-        <?php switch ($comment['status']) {
-            case 'REPORTED':
-            case 'UNCHECKED':
-                if ($data['param'] === 0) {
-                    echo "<a href='index.php?controller=admin&action=deleteComment&param=" . $comment['id'] . "'>Effacer</a>";
-                    echo " ";
-                    echo "<a href='index.php?controller=admin&action=approveComment&param=" . $comment['id'] . "'>Approuver</a>";               
-                }
-                if ($data['param'] === 1) {
-                    echo "<a href='index.php?controller=admin&action=deleteReportedComment&param=" . $comment['id'] . "'>Effacer</a>";
-                    echo " ";
-                    echo "<a href='index.php?controller=admin&action=approveReportedComment&param=" . $comment['id'] . "'>Approuver</a>";       
-                }
-                break;
-            case 'APPROVED':
-                if ($data['param'] === 0) {
-                    echo "<a href='index.php?controller=admin&action=deleteComment&param=" . $comment['id'] . "'>Effacer</a>";          
-                }
-                if ($data['param'] === 1) {
-                    echo "<a href='index.php?controller=admin&action=deleteReportedComment&param=" . $comment['id'] . "'>Effacer</a>";          
-                }
-                break;
-        }
-        ?>
-    </p>
-</div>
-<?php endforeach; ?>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Episode ID</th>
+        <th>Auteur</th>
+        <th>Contenu</th>
+        <th>Statut</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>
+    <?php foreach ($data['comments'] as $comment): ?>
+    <tr>
+        <td><?= $comment['id'] ?></td>
+        <td><?= $comment['episode_id'] ?></td>
+        <td><?= $comment['author'] ?></td>        
+        <td><?= $comment['content'] ?></td>        
+        <td><?= $statusLabels[$comment['status']] ?></td>
+        <td><?= $comment['publication_date'] ?></td>
+        <td>
+            <?php switch ($comment['status']) {
+                case 'REPORTED':
+                case 'UNCHECKED':
+                    if ($data['param'] === 0) {
+                        echo "<a href='index.php?controller=admin&action=deleteComment&param=" . $comment['id'] . "'>Effacer</a>";
+                        echo " ";
+                        echo "<a href='index.php?controller=admin&action=approveComment&param=" . $comment['id'] . "'>Approuver</a>";               
+                    }
+                    if ($data['param'] === 1) {
+                        echo "<a href='index.php?controller=admin&action=deleteReportedComment&param=" . $comment['id'] . "'>Effacer</a>";
+                        echo " ";
+                        echo "<a href='index.php?controller=admin&action=approveReportedComment&param=" . $comment['id'] . "'>Approuver</a>";       
+                    }
+                    break;
+                case 'APPROVED':
+                    if ($data['param'] === 0) {
+                        echo "<a href='index.php?controller=admin&action=deleteComment&param=" . $comment['id'] . "'>Effacer</a>";          
+                    }
+                    if ($data['param'] === 1) {
+                        echo "<a href='index.php?controller=admin&action=deleteReportedComment&param=" . $comment['id'] . "'>Effacer</a>";          
+                    }
+                    break;
+            }
+            ?>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
