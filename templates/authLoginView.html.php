@@ -29,4 +29,5 @@
     <label for="password">Mot de passe</label>
     <input type="password" name="password" id="password" required>
     <input type="submit" value="Se connecter">
+    <input type="hidden" name="token" id="token" value="<?= $data['token'] ?>">
 </form>

@@ -25,10 +25,17 @@ class AuthController extends Controller
         } 
 
         $this->data['param'] = $param;
+        $this->data['token'] = $this->superglobalManager->createToken();
         $this->view->render('Admin Login', 'authLoginView', $this->data);
     }   
 
     public function validateLogin(): void {
+        $token = $this->superglobalManager->findPostVariable('token');
+        if (!$this->superglobalManager->checkToken($token)) {
+            header('location: index.php?controller=episode&action=home');
+            exit();
+        }
+
         // if admin is already logged in, we redirect to admin menu
         if ($this->superglobalManager->hasSessionVariable('admin')) {
             header('location: index.php?controller=admin&action=episodes');

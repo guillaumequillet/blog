@@ -44,7 +44,7 @@ class SuperglobalManager {
         return $this->findSessionVariable('token');
     }
 
-    public function checkToken(string $token): bool {
+    public function checkToken(?string $token): bool {
         return $this->findSessionVariable('token') === $token;
     }
 }
