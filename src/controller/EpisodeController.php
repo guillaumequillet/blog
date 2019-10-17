@@ -5,10 +5,12 @@ namespace App\Controller;
 
 use App\Model\EpisodeModel;
 use App\Model\CommentModel;
+use App\Tool\SuperglobalManager;
 
 class EpisodeController extends Controller
 {
     public function show(?int $episodeId) : void {
+        $this->superglobalManager = new SuperglobalManager();
         $this->model = new EpisodeModel($this->database);
         $this->data = [];
 
@@ -29,6 +31,9 @@ class EpisodeController extends Controller
         // comments section
         $this->model = new CommentModel($this->database);
         $this->data['comments'] = $this->model->findEpisodeComments($episodeId);
+        $this->superglobalManager->setSessionVariable('token', bin2hex(random_bytes(32)));
+        $this->data['token'] = $this->superglobalManager->findSessionVariable('token');
+
         $this->view->render("Episode n° " . $episodeId, 'episodeView', $this->data);
     }
 

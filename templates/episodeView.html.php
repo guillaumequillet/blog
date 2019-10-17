@@ -47,6 +47,7 @@
         <label for="content">Message</label>
         <textarea name="content" id="content" required></textarea>
         <input type="submit" value="Envoyer le commentaire" class="button">
+        <input type="hidden" name="token" id="token" value="<?= $data['token'] ?>">
     </form>
 
     <h2>Commentaires</h2>
