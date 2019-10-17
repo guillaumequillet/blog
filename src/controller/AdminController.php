@@ -15,21 +15,20 @@ class AdminController extends Controller
         parent::__construct();
         $this->data = [];
         $this->view->setTemplate('../templates/adminLayout.html.php');
+        $this->superglobalManager = new SuperglobalManager();
     }
 
     public function user(?int $param = null): void {
-        $this->superglobalManager = new SuperglobalManager();
         $this->data['token'] = $this->superglobalManager->createToken();
         $this->data['param'] = $param;
         $this->view->render('Paramètres de connexion', 'adminUserView', $this->data);
     }
 
     public function userValidate(): void {
-        $this->superglobalManager = new SuperglobalManager();
         $token = $this->superglobalManager->findPostVariable('token');
 
         if (!$this->superglobalManager->checkToken($token)) {
-            header('location: index.php?controller=admin&action=user&param=0');
+            header('location: index.php?controller=auth&action=logout');
             exit();         
         }
 
@@ -103,7 +102,6 @@ class AdminController extends Controller
 
     public function editEpisode(?int $id = null): void {
         $this->model = new EpisodeModel($this->database);
-        $this->superglobalManager = new SuperglobalManager();
 
         if (!is_null($id)) {
             $episode = $this->model->findEpisode($id);
@@ -112,12 +110,19 @@ class AdminController extends Controller
                 $this->data['episode']['content'] = html_entity_decode($this->data['episode']['content']);
             }
         }
+        $this->data['token'] = $this->superglobalManager->createToken();
         $this->view->render('Gestion de l\'épisode', 'adminEpisodeEditView', $this->data);
     }
 
     public function updateEpisode(): void {
+        $token = $this->superglobalManager->findPostVariable('token');
+
+        if (!$this->superglobalManager->checkToken($token)) {
+            header('location: index.php?controller=auth&action=logout');
+            exit();         
+        }
+
         $this->model = new EpisodeModel($this->database);
-        $this->superglobalManager = new SuperglobalManager();
 
         if ($this->superglobalManager->hasPostVariable('episodeTitle')
             && $this->superglobalManager->hasPostVariable('episodeContent')) {

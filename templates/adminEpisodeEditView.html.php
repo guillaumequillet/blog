@@ -18,4 +18,5 @@
     <label for="published">Episode publié ?</label>
     <input type="checkbox" id="published" name="published" <?php echo $published ? 'checked' : '' ?>>
     <input type="submit" value="Enregistrer">
+    <input type="hidden" name="token" id="token" value="<?= $data['token'] ?>">
  </form>
