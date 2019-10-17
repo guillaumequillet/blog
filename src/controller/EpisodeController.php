@@ -37,7 +37,7 @@ class EpisodeController extends Controller
     }
 
     public function showList(?int $page = 0) : void {
-        $episodesPerPage = 5;
+        $episodesPerPage = 3;
 
         if (is_null($page)) {
             $page = 1;
@@ -46,10 +46,20 @@ class EpisodeController extends Controller
         $this->model = new EpisodeModel($this->database);
         $this->data = [];
 
-        $this->data['episodeExcerptsList'] = $this->model->findEpisodeExcerpts($page, $episodesPerPage);
-        if (empty($this->data['episodeExcerptsList'])) {
+        $this->data['episodeList'] = $this->model->findEpisodeExcerpts($page, $episodesPerPage);
+        if (empty($this->data['episodeList'])) {
             header('Location: index.php?controller=episode&action=unfound');
             exit();
+        }
+
+        $this->data['episodeExcerptsList'] = [];
+
+        foreach ($this->data['episodeList'] as $episode) {
+            $this->data['episodeExcerptsList'][] = [
+                'id'             => $episode['id'],
+                'title'          => $episode['title'],
+                'contentExcerpt' => substr(strip_tags(html_entity_decode($episode['content'])), 0, 5)
+            ];    
         }
 
         $this->data['currentPage'] = $page;

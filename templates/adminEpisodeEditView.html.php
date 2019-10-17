@@ -1,5 +1,7 @@
 <?php declare(strict_types=1); ?>
 
+<a href="index.php?controller=admin&action=episodes" class="button">Retour à la liste des épisodes</a>
+
 <h2>Gestion de l'épisode</h2>
 
 <?php 
