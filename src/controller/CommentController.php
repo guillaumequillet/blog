@@ -20,14 +20,17 @@ class CommentController extends Controller
 
         $this->model = new EpisodeModel($this->database);
 
-        if ($this->model->episodeExists($episodeId)) {
-            $this->model = new CommentModel($this->database);
+        if (!$this->model->episodeExists($episodeId)) {
+            header('location: index.php?controller=episode&action=unfound');
+            exit();
+        }
 
-            if ($this->superglobalManager->hasPostVariable('author') && $this->superglobalManager->hasPostVariable('content')) {
-                $author  = $this->superglobalManager->findPostVariable('author');
-                $content = $this->superglobalManager->findPostVariable('content');
-                $this->model->addComment($author, $content, $episodeId);
-            }
+        $this->model = new CommentModel($this->database);
+
+        if ($this->superglobalManager->hasPostVariable('author') && $this->superglobalManager->hasPostVariable('content')) {
+            $author  = $this->superglobalManager->findPostVariable('author');
+            $content = $this->superglobalManager->findPostVariable('content');
+            $this->model->addComment($author, $content, $episodeId);
         }
         header('Location: index.php?controller=episode&action=show&param=' . $episodeId);
     }
@@ -35,7 +38,13 @@ class CommentController extends Controller
     public function report(int $commentId) : void {
         $this->model = new CommentModel($this->database);
         $this->model->reportComment($commentId);
-        header('Location: index.php?controller=episode&action=show&param=' 
-            . $this->model->findEpisodeIdWithCommentId($commentId)); 
+        $episodeId = $this->model->findEpisodeIdWithCommentId($commentId);
+
+        if (is_null($episodeId)) {
+            header('Location: index.php?controller=episode&action=unfound');
+            exit();
+        }
+
+        header('Location: index.php?controller=episode&action=show&param=' . $episodeId); 
     }
 }

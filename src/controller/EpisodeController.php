@@ -18,7 +18,7 @@ class EpisodeController extends Controller
             $episodeData = $this->model->findPublishedEpisode($episodeId);
         }
 
-        if (!isset($episodeData) || is_null($episodeData)) {
+        if (!isset($episodeData) || is_null($episodeData) || is_null($episodeId)) {
             header('Location: index.php?controller=episode&action=unfound');
             exit();
         }

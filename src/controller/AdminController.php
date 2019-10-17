@@ -38,8 +38,12 @@ class AdminController extends Controller
         $oldUsername        = $this->superglobalManager->findPostVariable('oldUsername');
         $newUsername        = $this->superglobalManager->findPostVariable('newUsername');
         $newUsernameConfirm = $this->superglobalManager->findPostVariable('newUsernameConfirm');
-        $validUsername      = $this->model->validUsername($oldUsername);
 
+        if (is_null($oldUsername) || is_null($newUsername) || is_null($newUsernameConfirm)) {
+            header('location: index.php?controller=admin&action=user&param=0');
+            exit();
+        }        
+        $validUsername = $this->model->validUsername($oldUsername);
 
         if ($validUsername & ($newUsername === $newUsernameConfirm) & !is_null($newUsername))
         {
@@ -52,7 +56,12 @@ class AdminController extends Controller
         $oldPassword        = $this->superglobalManager->findPostVariable('oldPassword');
         $newPassword        = $this->superglobalManager->findPostVariable('newPassword');
         $newPasswordConfirm = $this->superglobalManager->findPostVariable('newPasswordConfirm');
-        $validPassword      = $this->model->validPassword($oldPassword);
+
+        if (is_null($oldPassword) || is_null($newPassword) || is_null($newPasswordConfirm)) {
+            header('location: index.php?controller=admin&action=user&param=0');
+            exit();
+        }
+        $validPassword = $this->model->validPassword($oldPassword);
 
         if ($validPassword & ($newPassword === $newPasswordConfirm) & !is_null($newPassword))
         {
