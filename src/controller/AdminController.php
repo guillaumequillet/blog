@@ -114,11 +114,13 @@ class AdminController extends Controller
 
         if (!is_null($id)) {
             $episode = $this->model->findEpisode($id);
-            if (!is_null($episode)) {
-                $this->data['episode'] = $episode;
-                $this->data['episode']['content'] = html_entity_decode($this->data['episode']['content']);
-            }
         }
+
+        if (isset($episode) && !is_null($episode)) {
+            $this->data['episode'] = $episode;
+            $this->data['episode']['content'] = html_entity_decode($this->data['episode']['content']);
+        }
+
         $this->data['token'] = $this->superglobalManager->createToken();
         $this->view->render('Gestion de l\'épisode', 'adminEpisodeEditView', $this->data);
     }
