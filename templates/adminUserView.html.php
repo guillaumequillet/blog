@@ -40,4 +40,5 @@
     <p id="errorPassword" class="errorText"></p>
 
     <input type="submit" value="Valider les modifications" id="formValidate">
+    <input type="hidden" name="token" id="token" value="<?= $data['token'] ?>">
 </form>

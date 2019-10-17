@@ -10,16 +10,22 @@ use App\Tool\SuperglobalManager;
 class CommentController extends Controller
 {
     public function add(int $episodeId) : void {
+        $this->superglobalManager = new SuperglobalManager();
+        $token = $this->superglobalManager->findPostVariable('token');
+
+        if (!$this->superglobalManager->checkToken($token)) {
+            header('Location: index.php?controller=episode&action=home');
+            exit();
+        }
+
         $this->model = new EpisodeModel($this->database);
 
         if ($this->model->episodeExists($episodeId)) {
             $this->model = new CommentModel($this->database);
 
-            $superglobalManager = new SuperglobalManager();
-
-            if ($superglobalManager->hasPostVariable('author') && $superglobalManager->hasPostVariable('content')) {
-                $author  = $superglobalManager->findPostVariable('author');
-                $content = $superglobalManager->findPostVariable('content');
+            if ($this->superglobalManager->hasPostVariable('author') && $this->superglobalManager->hasPostVariable('content')) {
+                $author  = $this->superglobalManager->findPostVariable('author');
+                $content = $this->superglobalManager->findPostVariable('content');
                 $this->model->addComment($author, $content, $episodeId);
             }
         }

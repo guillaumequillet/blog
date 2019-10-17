@@ -7,7 +7,7 @@ use App\Model\UserModel;
 use App\Model\CommentModel;
 use App\Model\EpisodeModel;
 use App\View\View;
-use App\Tool\Superglobalmanager;
+use App\Tool\SuperglobalManager;
 
 class AdminController extends Controller 
 {
@@ -18,30 +18,48 @@ class AdminController extends Controller
     }
 
     public function user(?int $param = null): void {
+        $this->superglobalManager = new SuperglobalManager();
+        $this->data['token'] = $this->superglobalManager->createToken();
         $this->data['param'] = $param;
         $this->view->render('Paramètres de connexion', 'adminUserView', $this->data);
     }
 
     public function userValidate(): void {
-        $this->superglobalmanager = new Superglobalmanager();
+        $this->superglobalManager = new SuperglobalManager();
+        $token = $this->superglobalManager->findPostVariable('token');
+
+        if (!$this->superglobalManager->checkToken($token)) {
+            header('location: index.php?controller=admin&action=user&param=0');
+            exit();         
+        }
+
         $this->model = new UserModel($this->database);
 
         // changing Username
-        if ($this->superglobalmanager->hasPostVariable('oldUsername') && $this->superglobalmanager->hasPostVariable('newUsername')  && $this->superglobalmanager->hasPostVariable('newUsernameConfirm') && $this->superglobalmanager->findPostVariable('newUsername') === $this->superglobalmanager->findPostVariable('newUsernameConfirm')) {
-            if ($this->model->validUsername($this->superglobalmanager->findPostVariable('oldUsername'))) {
-                $this->model->setUsername($this->superglobalmanager->findPostVariable('newUsername'));
-                header('location: index.php?controller=admin&action=user&param=1');
-                exit();
-            }
+        $oldUsername        = $this->superglobalManager->findPostVariable('oldUsername');
+        $newUsername        = $this->superglobalManager->findPostVariable('newUsername');
+        $newUsernameConfirm = $this->superglobalManager->findPostVariable('newUsernameConfirm');
+        $validUsername      = $this->model->validUsername($oldUsername);
+
+
+        if ($validUsername & ($newUsername === $newUsernameConfirm) & !is_null($newUsername))
+        {
+            $this->model->setUsername($newUsername);
+            header('location: index.php?controller=admin&action=user&param=1');
+            exit();
         }
 
         // changing password
-        if ($this->superglobalmanager->hasPostVariable('oldPassword') && $this->superglobalmanager->hasPostVariable('newPassword')  && $this->superglobalmanager->hasPostVariable('newPasswordConfirm') && $this->superglobalmanager->findPostVariable('newPassword') === $this->superglobalmanager->findPostVariable('newPasswordConfirm')) {
-            if ($this->model->validPassword($this->superglobalmanager->findPostVariable('oldPassword'))) {
-                $this->model->setPassword($this->superglobalmanager->findPostVariable('newPassword'));
-                header('location: index.php?controller=admin&action=user&param=1');
-                exit();
-            }
+        $oldPassword        = $this->superglobalManager->findPostVariable('oldPassword');
+        $newPassword        = $this->superglobalManager->findPostVariable('newPassword');
+        $newPasswordConfirm = $this->superglobalManager->findPostVariable('newPasswordConfirm');
+        $validPassword      = $this->model->validPassword($oldPassword);
+
+        if ($validPassword & ($newPassword === $newPasswordConfirm) & !is_null($newPassword))
+        {
+            $this->model->setPassword($newPassword);
+            header('location: index.php?controller=admin&action=user&param=1');
+            exit();
         }
 
         // if there was an issue
@@ -85,7 +103,7 @@ class AdminController extends Controller
 
     public function editEpisode(?int $id = null): void {
         $this->model = new EpisodeModel($this->database);
-        $this->superglobalmanager = new Superglobalmanager();
+        $this->superglobalManager = new SuperglobalManager();
 
         if (!is_null($id)) {
             $episode = $this->model->findEpisode($id);
@@ -99,15 +117,15 @@ class AdminController extends Controller
 
     public function updateEpisode(): void {
         $this->model = new EpisodeModel($this->database);
-        $this->superglobalmanager = new Superglobalmanager();
+        $this->superglobalManager = new SuperglobalManager();
 
-        if ($this->superglobalmanager->hasPostVariable('episodeTitle')
-            && $this->superglobalmanager->hasPostVariable('episodeContent')) {
+        if ($this->superglobalManager->hasPostVariable('episodeTitle')
+            && $this->superglobalManager->hasPostVariable('episodeContent')) {
 
-            $id        = $this->superglobalmanager->findPostVariable('episodeId');
-            $title     = $this->superglobalmanager->findPostVariable('episodeTitle');
-            $content   = $this->superglobalmanager->findPostVariable('episodeContent');
-            $published = $this->superglobalmanager->hasPostVariable('published');
+            $id        = $this->superglobalManager->findPostVariable('episodeId');
+            $title     = $this->superglobalManager->findPostVariable('episodeTitle');
+            $content   = $this->superglobalManager->findPostVariable('episodeContent');
+            $published = $this->superglobalManager->hasPostVariable('published');
 
             switch ($id) {
                 case '': // if no id is set : new episode

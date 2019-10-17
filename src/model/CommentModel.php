@@ -21,7 +21,6 @@ class CommentModel extends Model
                 'episodeId'  => $episodeId,
                 'status'     => 'UNCHECKED'
             ]);
-
         }
     }
 

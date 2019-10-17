@@ -31,8 +31,7 @@ class EpisodeController extends Controller
         // comments section
         $this->model = new CommentModel($this->database);
         $this->data['comments'] = $this->model->findEpisodeComments($episodeId);
-        $this->superglobalManager->setSessionVariable('token', bin2hex(random_bytes(32)));
-        $this->data['token'] = $this->superglobalManager->findSessionVariable('token');
+        $this->data['token'] = $this->superglobalManager->createToken();
 
         $this->view->render("Episode n° " . $episodeId, 'episodeView', $this->data);
     }
