@@ -19,6 +19,7 @@ $statusLabels = [
 <p>Il n'y a pas de commentaire à modérer.</p>
 <?php endif; ?>
 
+<?php if (!empty($data['comments'])): ?>
 <table>
     <tr>
         <th>ID</th>
@@ -66,3 +67,4 @@ $statusLabels = [
     </tr>
     <?php endforeach; ?>
 </table>
+<?php endif; ?>
