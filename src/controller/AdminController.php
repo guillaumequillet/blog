@@ -156,11 +156,33 @@ class AdminController extends Controller
         header('location: index.php?controller=admin&action=episodes');
     }
 
-    public function previewEpisode(int $id): void {
+    public function previewEpisode(?int $episodeId) : void {
+        $this->view->setTemplate('../templates/layout.html.php');
+
+        $this->superglobalManager = new SuperglobalManager();
         $this->model = new EpisodeModel($this->database);
-        $this->data['episode'] = $this->model->findEpisode($id);
-        $this->data['preview'] = true;
-        $this->view->render('Aperçu l\'épisode', 'episodeView', $this->data);
+        $this->data = [];
+
+        if (!is_null($episodeId)) {
+            $episodeData = $this->model->findEpisode($episodeId);
+        }
+
+        if (!isset($episodeData) || is_null($episodeData) || is_null($episodeId)) {
+            header('Location: index.php?controller=episode&action=unfound');
+            exit();
+        }
+        
+        // episode section
+        $this->data['episode']            = $episodeData;
+        $this->data['episode']['content'] = html_entity_decode($this->data['episode']['content']);
+        $this->data['episodeList']        = $this->model->findEpisodeTitles();
+    
+        // comments section
+        $this->model = new CommentModel($this->database);
+        $this->data['comments'] = $this->model->findEpisodeComments($episodeId);
+        $this->data['token'] = $this->superglobalManager->createToken();
+
+        $this->view->render("[PREVIEW] Episode n° " . $episodeId, 'episodeView', $this->data);
     }
 
     public function deleteEpisode(int $id): void {

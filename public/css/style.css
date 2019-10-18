@@ -151,6 +151,10 @@ article, .episode {
     box-sizing: border-box;
 }
 
+.episode {
+    margin: 20px auto;
+}
+
 #episodeControls {
     margin-top: 30px;
 }

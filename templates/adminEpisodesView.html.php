@@ -18,7 +18,7 @@
         <td><?= $episode['id'] ?></td>
         <td><?= $episode['title'] ?></td>
         <td><?= $episode['published'] ? "Oui" : "Non" ?></td>
-        <td><?= $episode['publication_date'] ? "Oui" : "Non" ?></td>
+        <td><?= $episode['publication_date'] ?></td>
         <td>
             <a href="index.php?controller=admin&action=editEpisode&param=<?= $episode['id'] ?>" class="button">Editer</a>
             <a href="index.php?controller=admin&action=previewEpisode&param=<?= $episode['id'] ?>" class="button">Aperçu</a>

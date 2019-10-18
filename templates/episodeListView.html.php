@@ -9,7 +9,6 @@
     </p>
     <a href="index.php?controller=episode&action=show&param=<?= $episode['id'] ?>" class="button">voir la suite</a>
 </div>
-<hr>
 <?php endforeach; ?>
 
 <div>
