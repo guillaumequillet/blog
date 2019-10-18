@@ -1,6 +1,13 @@
+body, html {
+    height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: white url(../images/background.png) no-repeat left top fixed;
     background-size: cover;
 }
