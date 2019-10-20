@@ -65,4 +65,9 @@ class CommentModel extends Model
         $req = $this->getPDO()->prepare('UPDATE comments SET status="APPROVED" WHERE id=:id');
         $req->execute(['id' => $id]);
     }
+
+    public function deleteEpisodeComments(int $episodeId) : void {
+        $req = $this->getPDO()->prepare('DELETE FROM comments WHERE episode_id=:episodeId');
+        $req->execute(['episodeId' => $episodeId]);      
+    }
 }

@@ -186,8 +186,14 @@ class AdminController extends Controller
     }
 
     public function deleteEpisode(int $id): void {
+        // delete related comments
+        $this->model = new CommentModel($this->database);
+        $this->model->deleteEpisodeComments($id);
+        
+        // delete episode
         $this->model = new EpisodeModel($this->database);
         $this->model->deleteEpisode($id);
+
         header('location: index.php?controller=admin&action=episodes');
     }
 }
