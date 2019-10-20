@@ -1,5 +1,5 @@
 body, html {
-    min-height: 100%;
+    height: 100%;
 }
 
 body {
@@ -116,7 +116,6 @@ header h2 {
 /* begin MAIN */
 main {
     width: 80%;
-    height: 100%;
     padding: 20px;
     margin: 40px auto;
     padding: 20px;
