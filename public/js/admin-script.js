@@ -23,8 +23,9 @@ if (formValidateElmt != null) {
         document.querySelector("#errorUser").innerText = "";
         document.querySelector("#errorPassword").innerText = "";
         document.querySelector("#error").innerText = "";
-
+    
         let fields = document.getElementsByTagName("input");
+
         let userFieldsFilled = 3 - countArrayElements([fields[0], fields[1], fields[2]], "");
         let pwdFieldsFilled  = 3 - countArrayElements([fields[3], fields[4], fields[5]], "");
 

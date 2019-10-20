@@ -229,6 +229,15 @@ fieldset {
     position: absolute;
     bottom: -40px;
 }
+
+figure {
+    text-align: center;
+}
+
+figure img {
+    width: 50%;
+    height: auto;
+}
 /* end MAIN */
 
 /* begin FOOTER */
