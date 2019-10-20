@@ -4,6 +4,11 @@
 
 <a href="index.php?controller=admin&action=editEpisode" class="button">Ajouter un épisode</a>
 
+<?php if (empty($data['episodeData'])): ?>
+<p>Il n'y a pas d'épisode à administrer.</p>
+<?php endif; ?>
+
+<?php if (!empty($data['episodeData'])): ?>
 <table>
     <caption>Liste des épisodes</caption>
     
@@ -43,3 +48,4 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+<?php endif; ?>

@@ -60,6 +60,7 @@ td a {
 }
 
 .button {
+    display: inline-block;
     background-color: black;
     color: white;
     margin: 15px;
