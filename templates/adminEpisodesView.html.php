@@ -19,11 +19,11 @@
 
     <tfoot>
         <tr>
-            <td>ID</td>
-            <td>Titre</td>
-            <td>Publié</td>
-            <td>Date de publication</td>
-            <td>Action</td>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Publié</th>
+            <th>Date de publication</th>
+            <th>Action</th>
         </tr>
     </tfoot>
 
