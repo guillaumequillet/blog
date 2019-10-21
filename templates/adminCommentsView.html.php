@@ -20,7 +20,7 @@ $statusLabels = [
 <?php endif; ?>
 
 <?php if (!empty($data['comments'])): ?>
-<table>
+<table id="adminCommentTable">
     <caption>Liste des commentaires</caption>
 
     <thead>

@@ -5,9 +5,8 @@
 <div class="episode">
     <h3><?= $episode['title'] ?></h3>
     <p>
-        <?= html_entity_decode($episode['contentExcerpt']) ?>...
+        <?= html_entity_decode($episode['contentExcerpt']) ?>...<a href="index.php?controller=episode&action=show&param=<?= $episode['id'] ?>" class="button">voir la suite</a>
     </p>
-    <a href="index.php?controller=episode&action=show&param=<?= $episode['id'] ?>" class="button">voir la suite</a>
 </div>
 <?php endforeach; ?>
 

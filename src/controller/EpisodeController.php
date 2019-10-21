@@ -69,7 +69,7 @@ class EpisodeController extends Controller
             $this->data['previousPage'] = $this->data['currentPage'] - 1;
         }
 
-        $episodeCount = $this->model->findEpisodeCount();
+        $episodeCount = $this->model->findPublishedEpisodeCount();
         $maxPage = (int)(ceil($episodeCount / $episodesPerPage));
 
         if ($this->data['currentPage'] < $maxPage) {

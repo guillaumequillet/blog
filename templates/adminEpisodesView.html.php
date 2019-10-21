@@ -9,7 +9,7 @@
 <?php endif; ?>
 
 <?php if (!empty($data['episodeData'])): ?>
-<table>
+<table id="adminEpisodeTable">
     <caption>Liste des épisodes</caption>
     
     <thead>
@@ -39,7 +39,7 @@
             <td><?= $episode['title'] ?></td>
             <td><?= $episode['published'] ? "Oui" : "Non" ?></td>
             <td><?= $episode['publication_date'] ?></td>
-            <td>
+            <td class="adminActions">
                 <a href="index.php?controller=admin&action=editEpisode&param=<?= $episode['id'] ?>" class="button">Editer</a>
                 <a href="index.php?controller=admin&action=previewEpisode&param=<?= $episode['id'] ?>" class="button">Aperçu</a>
                 <a href="index.php?controller=admin&action=deleteEpisode&param=<?= $episode['id'] ?>" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer cet épisode ?');" class="button">Supprimer</a>

@@ -63,8 +63,8 @@ td a {
     display: inline-block;
     background-color: black;
     color: white;
-    margin: 15px;
-    padding: 15px;
+    margin: 10px;
+    padding: 10px;
     border-radius: 15px;
     text-decoration: none;
 }
@@ -254,3 +254,97 @@ footer p {
     padding: 0;
 }
 /* end FOOTER */
+
+/* RESPONSIVE */
+@media all and (max-width: 1024px) {
+    #mainMenu {
+        text-align: center;
+    }
+
+    #mainMenu ul {
+        padding: 0;
+        flex-direction: column;
+        margin: 30px auto;
+    }   
+
+    #mainMenu li {
+        margin: 10px 0;
+    }
+
+    .adminActions {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    td {
+        border: 1px dashed grey;
+    }
+
+    tr {
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Comment ID */
+    #adminCommentTable td:nth-of-type(1):before {
+        content: 'ID : ';
+    }
+    
+    /* Comment Episode ID */
+    #adminCommentTable td:nth-of-type(2):before {
+        content: 'Episode ID : ';
+    }    
+
+    /* Author */
+    #adminCommentTable td:nth-of-type(3):before {
+        content: 'Auteur : ';
+    }    
+
+    /* Content */
+    #adminCommentTable td:nth-of-type(4):before {
+        content: 'Contenu : ';
+    }    
+
+    /* Status */
+    #adminCommentTable td:nth-of-type(5):before {
+        content: 'Statut : ';
+    }   
+
+    /* Publication Date */
+    #adminCommentTable td:nth-of-type(6):before {
+        content: 'Date de publication : ';
+    }  
+
+
+    /* Episode ID */
+    #adminEpisodeTable td:nth-of-type(1):before {
+        content: 'ID : ';
+    }
+
+    /* Episode Title */
+    #adminEpisodeTable td:nth-of-type(2):before {
+        content: 'Titre : ';
+    }
+
+    /* Episode published */
+    #adminEpisodeTable td:nth-of-type(3):before {
+        content: 'Publié : ';
+    }
+
+    /* Episode publication date */
+    #adminEpisodeTable td:nth-of-type(4):before {
+        content: 'Date de création : ';
+    }
+
+
+    tfoot, thead {
+        display: none;
+    }
+}
+/* END RESPONSIVE */

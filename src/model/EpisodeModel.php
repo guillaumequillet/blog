@@ -17,7 +17,7 @@ class EpisodeModel extends Model
         return ($res === false) ? false : (bool)$req->fetch();
     }
 
-    public function findEpisodeCount(): int {
+    public function findPublishedEpisodeCount(): int {
         $req = $this->getPDO()->query('SELECT COUNT(*) FROM episodes WHERE published=1');
         return (int)$req->fetch()[0];
     }
@@ -43,6 +43,11 @@ class EpisodeModel extends Model
         $req->execute(['id' => $id]);
         $res = $req->fetch();
         return ($res === false) ? null : $res;
+    }
+
+    public function findEpisodeCount(): int {
+        $req = $this->getPDO()->query('SELECT COUNT(*) FROM episodes');
+        return (int)$req->fetch()[0];
     }
 
     public function findEpisodeTitles(): ?array {
