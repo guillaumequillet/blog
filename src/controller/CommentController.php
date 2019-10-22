@@ -5,16 +5,12 @@ namespace App\Controller;
 
 use App\Model\EpisodeModel;
 use App\Model\CommentModel;
-use App\Tool\SuperglobalManager;
 
 class CommentController extends Controller
 {
     public function add(int $episodeId) : void 
     {
-        $this->superglobalManager = new SuperglobalManager();
-        $token = $this->superglobalManager->findPostVariable('token');
-
-        if (!$this->superglobalManager->checkToken($token)) {
+        if (!$this->token->check()) {
             header('Location: index.php?controller=episode&action=home');
             exit();
         }

@@ -5,6 +5,8 @@ namespace App\Controller;
 
 use App\View\View;
 use App\Tool\Database;
+use App\Tool\SuperglobalManager;
+use App\Tool\Token;
 
 class Controller 
 {
@@ -17,5 +19,7 @@ class Controller
     {
         $this->database = new Database();
         $this->view = new View();
+        $this->superglobalManager = new SuperglobalManager();
+        $this->token = new Token();
     }
 }

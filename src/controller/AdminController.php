@@ -7,7 +7,6 @@ use App\Model\UserModel;
 use App\Model\CommentModel;
 use App\Model\EpisodeModel;
 use App\View\View;
-use App\Tool\SuperglobalManager;
 
 class AdminController extends Controller 
 {
@@ -16,21 +15,18 @@ class AdminController extends Controller
         parent::__construct();
         $this->data = [];
         $this->view->setTemplate('../templates/adminLayout.html.php');
-        $this->superglobalManager = new SuperglobalManager();
     }
 
     public function user(?int $param = null): void 
     {
-        $this->data['token'] = $this->superglobalManager->createToken();
+        $this->data['token'] = $this->token->generateString();
         $this->data['param'] = $param;
         $this->view->render('Paramètres de connexion', 'adminUserView', $this->data);
     }
 
     public function userValidate(): void 
     {
-        $token = $this->superglobalManager->findPostVariable('token');
-
-        if (!$this->superglobalManager->checkToken($token)) {
+        if (!$this->token->check()) {
             header('location: index.php?controller=auth&action=logout');
             exit();         
         }
@@ -129,15 +125,13 @@ class AdminController extends Controller
             $this->data['episode']['content'] = html_entity_decode($this->data['episode']['content']);
         }
 
-        $this->data['token'] = $this->superglobalManager->createToken();
+        $this->data['token'] = $this->token->generateString();
         $this->view->render('Gestion de l\'épisode', 'adminEpisodeEditView', $this->data);
     }
 
     public function updateEpisode(): void 
     {
-        $token = $this->superglobalManager->findPostVariable('token');
-
-        if (!$this->superglobalManager->checkToken($token)) {
+        if (!$this->token->check()) {
             header('location: index.php?controller=auth&action=logout');
             exit();         
         }
@@ -146,7 +140,6 @@ class AdminController extends Controller
 
         if ($this->superglobalManager->hasPostVariable('episodeTitle')
             && $this->superglobalManager->hasPostVariable('episodeContent')) {
-
             $id = $this->superglobalManager->findPostVariable('episodeId');
             $title = $this->superglobalManager->findPostVariable('episodeTitle');
             $content = $this->superglobalManager->findPostVariable('episodeContent');
@@ -168,8 +161,6 @@ class AdminController extends Controller
     public function previewEpisode(?int $episodeId) : void 
     {
         $this->view->setTemplate('../templates/layout.html.php');
-
-        $this->superglobalManager = new SuperglobalManager();
         $this->model = new EpisodeModel($this->database);
         $this->data = [];
 
@@ -190,7 +181,7 @@ class AdminController extends Controller
         // comments section
         $this->model = new CommentModel($this->database);
         $this->data['comments'] = $this->model->findEpisodeComments($episodeId);
-        $this->data['token'] = $this->superglobalManager->createToken();
+        $this->data['token'] = $this->token->generateString();
 
         $this->view->render("[PREVIEW] Episode n° " . $episodeId, 'episodeView', $this->data);
     }

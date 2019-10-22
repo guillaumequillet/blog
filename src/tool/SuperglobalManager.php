@@ -47,15 +47,4 @@ class SuperglobalManager
             unset($_SESSION[$key]);
         }
     }
-
-    public function createToken(): string 
-    {
-        $this->setSessionVariable('token', bin2hex(random_bytes(32)));
-        return $this->findSessionVariable('token');
-    }
-
-    public function checkToken(?string $token): bool 
-    {
-        return $this->findSessionVariable('token') === $token;
-    }
 }

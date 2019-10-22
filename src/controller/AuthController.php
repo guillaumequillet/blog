@@ -3,18 +3,16 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Tool\SuperglobalManager;
+use App\Tool\Token;
 use App\Model\UserModel;
 use App\View\View;
 
 class AuthController extends Controller 
 {
-    private $superglobalManager;
-    
     public function __construct() 
     {
         parent::__construct();
-        $this->superglobalManager = new SuperglobalManager();
+        $this->token = new Token();
     }
 
     // Connexion
@@ -27,14 +25,13 @@ class AuthController extends Controller
         } 
 
         $this->data['param'] = $param;
-        $this->data['token'] = $this->superglobalManager->createToken();
+        $this->data['token'] = $this->token->generateString();
         $this->view->render('Admin Login', 'authLoginView', $this->data);
     }   
 
     public function validateLogin(): void 
     {
-        $token = $this->superglobalManager->findPostVariable('token');
-        if (!$this->superglobalManager->checkToken($token)) {
+        if (!$this->token->check()) {
             header('location: index.php?controller=episode&action=home');
             exit();
         }
