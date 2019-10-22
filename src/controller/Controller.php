@@ -18,6 +18,7 @@ class Controller
     public function __construct() 
     {
         $this->database = new Database();
+        $this->data = [];
         $this->view = new View();
         $this->superglobalManager = new SuperglobalManager();
         $this->token = new Token();

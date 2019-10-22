@@ -13,7 +13,6 @@ class AdminController extends Controller
     public function __construct() 
     {
         parent::__construct();
-        $this->data = [];
         $this->view->setTemplate('../templates/adminLayout.html.php');
     }
 
@@ -162,7 +161,6 @@ class AdminController extends Controller
     {
         $this->view->setTemplate('../templates/layout.html.php');
         $this->model = new EpisodeModel($this->database);
-        $this->data = [];
 
         if (!is_null($episodeId)) {
             $episodeData = $this->model->findEpisode($episodeId);

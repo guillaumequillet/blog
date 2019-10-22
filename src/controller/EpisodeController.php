@@ -11,7 +11,6 @@ class EpisodeController extends Controller
     public function show(?int $episodeId) : void 
     {
         $this->model = new EpisodeModel($this->database);
-        $this->data = [];
 
         if (!is_null($episodeId)) {
             $episodeData = $this->model->findPublishedEpisode($episodeId);
@@ -45,7 +44,6 @@ class EpisodeController extends Controller
         }
 
         $this->model = new EpisodeModel($this->database);
-        $this->data = [];
 
         $this->data['episodeList'] = $this->model->findEpisodeExcerpts($page, $episodesPerPage);
         if (empty($this->data['episodeList'])) {
