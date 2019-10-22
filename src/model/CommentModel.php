@@ -3,26 +3,18 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-use App\Tool\SuperglobalManager;
-
 class CommentModel extends Model
 {
     // Front-End methods
     public function addComment(string $author, string $content, int $episodeId) : void 
     {
-        $this->superglobalManager = new SuperglobalManager();
-        $postToken = $this->superglobalManager->findPostVariable('token');
-        $sessionToken = $this->superglobalManager->findSessionVariable('token');
-
-        if ($postToken === $sessionToken && !is_null($postToken)) {
-            $req = $this->getPDO()->prepare('INSERT INTO comments(author, content, episode_id, status) VALUES(:author, :content, :episodeId, :status)');
-            $req->execute([
-                'author' => $author,
-                'content' => $content,
-                'episodeId' => $episodeId,
-                'status' => 'UNCHECKED'
-            ]);
-        }
+        $req = $this->getPDO()->prepare('INSERT INTO comments(author, content, episode_id, status) VALUES(:author, :content, :episodeId, :status)');
+        $req->execute([
+            'author' => $author,
+            'content' => $content,
+            'episodeId' => $episodeId,
+            'status' => 'UNCHECKED'
+        ]);
     }
 
     public function findEpisodeComments(int $episodeId): ?array 

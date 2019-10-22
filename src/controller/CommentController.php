@@ -27,7 +27,10 @@ class CommentController extends Controller
         if ($this->superglobalManager->hasPostVariable('author') && $this->superglobalManager->hasPostVariable('content')) {
             $author = $this->superglobalManager->findPostVariable('author');
             $content = $this->superglobalManager->findPostVariable('content');
-            $this->model->addComment($author, $content, $episodeId);
+
+            if ($this->token->check()) {
+                $this->model->addComment($author, $content, $episodeId);
+            }
         }
         header('Location: index.php?controller=episode&action=show&param=' . $episodeId);
     }

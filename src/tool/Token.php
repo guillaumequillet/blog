@@ -16,10 +16,10 @@ class Token
         return $this->superglobalManager->findSessionVariable('token');
     }
 
-    public function check(): bool 
+    public function check(): bool
     {
         $postToken = $this->superglobalManager->findPostVariable('token');
         $sessionToken = $this->superglobalManager->findSessionVariable('token');
-        return ($postToken === $sessionToken);
+        return ($postToken === $sessionToken && !is_null($postToken));
     }	
 }
