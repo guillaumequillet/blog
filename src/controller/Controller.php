@@ -13,7 +13,8 @@ class Controller
     protected $view;
     protected $data;
 
-    public function __construct() {
+    public function __construct() 
+    {
         $this->database = new Database();
         $this->view = new View();
     }

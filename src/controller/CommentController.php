@@ -9,7 +9,8 @@ use App\Tool\SuperglobalManager;
 
 class CommentController extends Controller
 {
-    public function add(int $episodeId) : void {
+    public function add(int $episodeId) : void 
+    {
         $this->superglobalManager = new SuperglobalManager();
         $token = $this->superglobalManager->findPostVariable('token');
 
@@ -28,14 +29,15 @@ class CommentController extends Controller
         $this->model = new CommentModel($this->database);
 
         if ($this->superglobalManager->hasPostVariable('author') && $this->superglobalManager->hasPostVariable('content')) {
-            $author  = $this->superglobalManager->findPostVariable('author');
+            $author = $this->superglobalManager->findPostVariable('author');
             $content = $this->superglobalManager->findPostVariable('content');
             $this->model->addComment($author, $content, $episodeId);
         }
         header('Location: index.php?controller=episode&action=show&param=' . $episodeId);
     }
 
-    public function report(int $commentId) : void {
+    public function report(int $commentId) : void 
+    {
         $this->model = new CommentModel($this->database);
         $this->model->reportComment($commentId);
         $episodeId = $this->model->findEpisodeIdWithCommentId($commentId);
@@ -44,7 +46,6 @@ class CommentController extends Controller
             header('Location: index.php?controller=episode&action=unfound');
             exit();
         }
-
         header('Location: index.php?controller=episode&action=show&param=' . $episodeId); 
     }
 }

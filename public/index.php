@@ -15,8 +15,7 @@ session_start();
 // if controller exists
 if ($superglobalManager->hasGetVariable('controller') && class_exists("App\\Controller\\" . ucfirst($_GET['controller']) . 'Controller')) {
     // if admin is not logged in but admin controller is requested
-    if ($superglobalManager->findGetVariable('controller') === 'admin' && !$superglobalManager->hasSessionVariable('admin'))
-    {
+    if ($superglobalManager->findGetVariable('controller') === 'admin' && !$superglobalManager->hasSessionVariable('admin')) {
         $controller = new AuthController();
         $action = 'login';
         $param = 3;

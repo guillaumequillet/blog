@@ -5,10 +5,10 @@
 <h2>Gestion de l'épisode</h2>
 
 <?php 
-    $episodeId      = isset($data['episode']) ? $data['episode']['id'] : '';
-    $episodeTitle   = isset($data['episode']) ? $data['episode']['title'] : '';
+    $episodeId = isset($data['episode']) ? $data['episode']['id'] : '';
+    $episodeTitle = isset($data['episode']) ? $data['episode']['title'] : '';
     $episodeContent = isset($data['episode']) ? $data['episode']['content'] : '';
-    $published      = isset($data['episode']) ? $data['episode']['published'] : '';
+    $published = isset($data['episode']) ? $data['episode']['published'] : '';
 ?>
 
  <form method="POST" action="index.php?controller=admin&action=updateEpisode" id="episodeForm">

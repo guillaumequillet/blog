@@ -11,20 +11,23 @@ use App\Tool\SuperglobalManager;
 
 class AdminController extends Controller 
 {
-    public function __construct() {
+    public function __construct() 
+    {
         parent::__construct();
         $this->data = [];
         $this->view->setTemplate('../templates/adminLayout.html.php');
         $this->superglobalManager = new SuperglobalManager();
     }
 
-    public function user(?int $param = null): void {
+    public function user(?int $param = null): void 
+    {
         $this->data['token'] = $this->superglobalManager->createToken();
         $this->data['param'] = $param;
         $this->view->render('Paramètres de connexion', 'adminUserView', $this->data);
     }
 
-    public function userValidate(): void {
+    public function userValidate(): void 
+    {
         $token = $this->superglobalManager->findPostVariable('token');
 
         if (!$this->superglobalManager->checkToken($token)) {
@@ -45,8 +48,7 @@ class AdminController extends Controller
         }        
         $validUsername = $this->model->validUsername($oldUsername);
 
-        if ($validUsername & ($newUsername === $newUsernameConfirm) & !is_null($newUsername))
-        {
+        if ($validUsername & ($newUsername === $newUsernameConfirm) & !is_null($newUsername)) {
             $this->model->setUsername($newUsername);
             header('location: index.php?controller=admin&action=user&param=1');
             exit();
@@ -63,8 +65,7 @@ class AdminController extends Controller
         }
         $validPassword = $this->model->validPassword($oldPassword);
 
-        if ($validPassword & ($newPassword === $newPasswordConfirm) & !is_null($newPassword))
-        {
+        if ($validPassword & ($newPassword === $newPasswordConfirm) & !is_null($newPassword)) {
             $this->model->setPassword($newPassword);
             header('location: index.php?controller=admin&action=user&param=1');
             exit();
@@ -74,42 +75,49 @@ class AdminController extends Controller
         header('location: index.php?controller=admin&action=user&param=0');
     }
 
-    public function comments(?int $reportedOnly = 0): void {
+    public function comments(?int $reportedOnly = 0): void 
+    {
         $this->model = new CommentModel($this->database);
         $this->data['comments'] = ((bool)$reportedOnly) ? $this->model->findReportedComments() : $this->model->findAllComments();
         $this->data['param'] = is_null($reportedOnly) ? 0 : $reportedOnly;
         $this->view->render('Modération des commentaires', 'adminCommentsView', $this->data);
     }
 
-    public function deleteReportedComment(int $id): void {
+    public function deleteReportedComment(int $id): void 
+    {
         $this->deleteComment($id);
         header('location: index.php?controller=admin&action=comments&param=1');
     }
 
-    public function approveReportedComment(int $id): void {
+    public function approveReportedComment(int $id): void 
+    {
         $this->approveComment($id);
         header('location: index.php?controller=admin&action=comments&param=1');
     }
 
-    public function deleteComment(int $id): void {
+    public function deleteComment(int $id): void 
+    {
         $this->model = new CommentModel($this->database);
         $this->model->deleteComment($id);
         header('location: index.php?controller=admin&action=comments&param=0');
     }
 
-    public function approveComment(int $id): void {
+    public function approveComment(int $id): void 
+    {
         $this->model = new CommentModel($this->database);
         $this->model->approveComment($id);
         header('location: index.php?controller=admin&action=comments&param=0');
     }
 
-    public function episodes(): void {
+    public function episodes(): void 
+    {
         $this->model = new EpisodeModel($this->database);
         $this->data['episodeData'] = $this->model->findEpisodeTitles();
         $this->view->render('Gestion des épisodes', 'adminEpisodesView', $this->data);
     }
 
-    public function editEpisode(?int $id = null): void {
+    public function editEpisode(?int $id = null): void 
+    {
         $this->model = new EpisodeModel($this->database);
 
         if (!is_null($id)) {
@@ -125,7 +133,8 @@ class AdminController extends Controller
         $this->view->render('Gestion de l\'épisode', 'adminEpisodeEditView', $this->data);
     }
 
-    public function updateEpisode(): void {
+    public function updateEpisode(): void 
+    {
         $token = $this->superglobalManager->findPostVariable('token');
 
         if (!$this->superglobalManager->checkToken($token)) {
@@ -156,7 +165,8 @@ class AdminController extends Controller
         header('location: index.php?controller=admin&action=episodes');
     }
 
-    public function previewEpisode(?int $episodeId) : void {
+    public function previewEpisode(?int $episodeId) : void 
+    {
         $this->view->setTemplate('../templates/layout.html.php');
 
         $this->superglobalManager = new SuperglobalManager();
@@ -185,7 +195,8 @@ class AdminController extends Controller
         $this->view->render("[PREVIEW] Episode n° " . $episodeId, 'episodeView', $this->data);
     }
 
-    public function deleteEpisode(int $id): void {
+    public function deleteEpisode(int $id): void 
+    {
         // delete related comments
         $this->model = new CommentModel($this->database);
         $this->model->deleteEpisodeComments($id);

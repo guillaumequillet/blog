@@ -8,7 +8,7 @@
             }
         }
         $previousEpisodeKey = ($currentEpisodeKey > 0) ? $currentEpisodeKey - 1 : null;
-        $nextEpisodeKey     = ($currentEpisodeKey < sizeof($data['episodeList']) - 1) ? $currentEpisodeKey + 1 : null;
+        $nextEpisodeKey = ($currentEpisodeKey < sizeof($data['episodeList']) - 1) ? $currentEpisodeKey + 1 : null;
     ?>
 
     <article>
