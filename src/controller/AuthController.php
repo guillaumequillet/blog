@@ -3,18 +3,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Tool\Token;
 use App\Model\UserModel;
 use App\View\View;
 
 class AuthController extends Controller 
 {
-    public function __construct() 
-    {
-        parent::__construct();
-        $this->token = new Token();
-    }
-
     // Connexion
     public function login(?int $param = null): void 
     {
