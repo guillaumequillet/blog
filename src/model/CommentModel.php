@@ -11,16 +11,16 @@ class CommentModel extends Model
     public function addComment(string $author, string $content, int $episodeId) : void 
     {
         $this->superglobalManager = new SuperglobalManager();
-        $postToken    = $this->superglobalManager->findPostVariable('token');
+        $postToken = $this->superglobalManager->findPostVariable('token');
         $sessionToken = $this->superglobalManager->findSessionVariable('token');
 
         if ($postToken === $sessionToken && !is_null($postToken)) {
             $req = $this->getPDO()->prepare('INSERT INTO comments(author, content, episode_id, status) VALUES(:author, :content, :episodeId, :status)');
             $req->execute([
-                'author'     => $author,
-                'content'    => $content,
-                'episodeId'  => $episodeId,
-                'status'     => 'UNCHECKED'
+                'author' => $author,
+                'content' => $content,
+                'episodeId' => $episodeId,
+                'status' => 'UNCHECKED'
             ]);
         }
     }

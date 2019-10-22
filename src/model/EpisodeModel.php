@@ -67,8 +67,8 @@ class EpisodeModel extends Model
     {
         $req = $this->getPDO()->prepare('INSERT INTO episodes(title, content, published) VALUES(:title, :content, :published)');
         $req->execute([
-            'title'     => $title,
-            'content'   => $content,
+            'title' => $title,
+            'content' => $content,
             'published' => $published
         ]);
     }
@@ -77,9 +77,9 @@ class EpisodeModel extends Model
     {
         $req = $this->getPDO()->prepare('UPDATE episodes SET title=:title, content=:content, published=:published WHERE id=:id');
         $req->execute([
-            'id'        => $id,
-            'title'     => $title,
-            'content'   => $content,
+            'id' => $id,
+            'title' => $title,
+            'content' => $content,
             'published' => $published
         ]);
     }

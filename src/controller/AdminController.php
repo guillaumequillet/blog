@@ -38,8 +38,8 @@ class AdminController extends Controller
         $this->model = new UserModel($this->database);
 
         // changing Username
-        $oldUsername        = $this->superglobalManager->findPostVariable('oldUsername');
-        $newUsername        = $this->superglobalManager->findPostVariable('newUsername');
+        $oldUsername = $this->superglobalManager->findPostVariable('oldUsername');
+        $newUsername = $this->superglobalManager->findPostVariable('newUsername');
         $newUsernameConfirm = $this->superglobalManager->findPostVariable('newUsernameConfirm');
 
         if (is_null($oldUsername) || is_null($newUsername) || is_null($newUsernameConfirm)) {
@@ -55,8 +55,8 @@ class AdminController extends Controller
         }
 
         // changing password
-        $oldPassword        = $this->superglobalManager->findPostVariable('oldPassword');
-        $newPassword        = $this->superglobalManager->findPostVariable('newPassword');
+        $oldPassword = $this->superglobalManager->findPostVariable('oldPassword');
+        $newPassword = $this->superglobalManager->findPostVariable('newPassword');
         $newPasswordConfirm = $this->superglobalManager->findPostVariable('newPasswordConfirm');
 
         if (is_null($oldPassword) || is_null($newPassword) || is_null($newPasswordConfirm)) {
@@ -147,9 +147,9 @@ class AdminController extends Controller
         if ($this->superglobalManager->hasPostVariable('episodeTitle')
             && $this->superglobalManager->hasPostVariable('episodeContent')) {
 
-            $id        = $this->superglobalManager->findPostVariable('episodeId');
-            $title     = $this->superglobalManager->findPostVariable('episodeTitle');
-            $content   = $this->superglobalManager->findPostVariable('episodeContent');
+            $id = $this->superglobalManager->findPostVariable('episodeId');
+            $title = $this->superglobalManager->findPostVariable('episodeTitle');
+            $content = $this->superglobalManager->findPostVariable('episodeContent');
             $published = $this->superglobalManager->hasPostVariable('published');
 
             switch ($id) {
@@ -183,9 +183,9 @@ class AdminController extends Controller
         }
         
         // episode section
-        $this->data['episode']            = $episodeData;
+        $this->data['episode'] = $episodeData;
         $this->data['episode']['content'] = html_entity_decode($this->data['episode']['content']);
-        $this->data['episodeList']        = $this->model->findEpisodeTitles();
+        $this->data['episodeList'] = $this->model->findEpisodeTitles();
     
         // comments section
         $this->model = new CommentModel($this->database);

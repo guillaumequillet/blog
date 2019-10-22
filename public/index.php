@@ -28,7 +28,7 @@ if ($superglobalManager->hasGetVariable('controller') && class_exists("App\\Cont
     // if action exists
     if ($superglobalManager->hasGetVariable('action') && method_exists($controller, $_GET['action'])) {
         $action = $superglobalManager->findGetVariable('action');
-        $param  = $superglobalManager->hasGetVariable('param') ? (int)$superglobalManager->findGetVariable('param') : null;
+        $param = $superglobalManager->hasGetVariable('param') ? (int)$superglobalManager->findGetVariable('param') : null;
         $controller->$action($param);
         exit();
     }
