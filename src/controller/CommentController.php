@@ -11,7 +11,8 @@ class CommentController extends Controller
     public function add(int $episodeId) : void 
     {
         if (!$this->token->check()) {
-            header('Location: index.php?controller=episode&action=home');
+            $this->superglobalManager->setSessionVariable('tokenError', 'true');
+            header('Location: index.php?controller=episode&action=show&param=' . $episodeId);
             exit();
         }
 

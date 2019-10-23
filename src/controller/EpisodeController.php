@@ -31,6 +31,11 @@ class EpisodeController extends Controller
         $this->data['comments'] = $this->model->findEpisodeComments($episodeId);
         $this->data['token'] = $this->token->generateString();
 
+        if ($this->superglobalManager->findSessionVariable('tokenError')) {
+            $this->data['error'] = 'Il y a eu un problème lors de la validation du formulaire';
+            $this->superglobalManager->deleteSessionVariable('tokenError');
+        }
+
         $this->view->render("Episode n° " . $episodeId, 'episodeView', $this->data);
     }
 

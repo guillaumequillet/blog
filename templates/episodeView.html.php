@@ -41,6 +41,9 @@
 
 <section id="comments">
     <h2>Ajouter un commentaire </h2>
+    <?php if (isset($data['error'])): ?>
+        <p class="errorText"><?= $data['error'] ?></p>
+    <?php endif; ?>
     <form action="index.php?controller=comment&action=add&param=<?= $data['episode']['id'] ?>" method="post" id="commentForm">
         <label for="author">Nom d'utilisateur</label>
         <input name="author" id="author" required>

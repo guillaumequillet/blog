@@ -3,7 +3,7 @@
 <h2>Paramètres de connexion</h2>
 
 <?php if($data['param'] === 0): ?>
-<p>
+<p class="errorText">
     Les données saisies sont incorrectes.
 </p>
 <?php endif; ?>
