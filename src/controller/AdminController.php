@@ -26,7 +26,7 @@ class AdminController extends Controller
     public function userValidate(): void 
     {
         if (!$this->token->check()) {
-            header('location: index.php?controller=auth&action=logout');
+            header('location: index.php?controller=admin&action=user&param=0');
             exit();         
         }
 
@@ -139,21 +139,21 @@ class AdminController extends Controller
 
         if ($this->superglobalManager->hasPostVariable('episodeTitle')
             && $this->superglobalManager->hasPostVariable('episodeContent')) {
+
             $id = $this->superglobalManager->findPostVariable('episodeId');
             $title = $this->superglobalManager->findPostVariable('episodeTitle');
             $content = $this->superglobalManager->findPostVariable('episodeContent');
             $published = $this->superglobalManager->hasPostVariable('published');
-
-            switch ($id) {
-                case '': // if no id is set : new episode
-                    $this->model->addEpisode($title, $content, (int)$published);
-                    break;
-                
-                default: // update if id is set
-                    $this->model->editEpisode((int)$id, $title, $content, (int)$published);
-                    break;
-            }
         }
+
+        if ($id === '') {
+            $this->model->addEpisode($title, $content, (int)$published);
+        }
+        
+        if ($id != '') {
+            $this->model->editEpisode((int)$id, $title, $content, (int)$published);
+        }
+
         header('location: index.php?controller=admin&action=episodes');
     }
 
