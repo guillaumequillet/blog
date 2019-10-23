@@ -25,7 +25,7 @@ class AuthController extends Controller
     public function validateLogin(): void 
     {
         if (!$this->token->check()) {
-            header('location: index.php?controller=episode&action=home');
+            header('location: index.php?controller=auth&action=login&param=0');
             exit();
         }
 
