@@ -42,7 +42,7 @@ class EpisodeController extends Controller
     public function showList(?int $page = 0) : void 
     {
         $episodesPerPage = 3;
-        $excerptSize = 200;
+        $excerptSize = 350;
 
         if (is_null($page)) {
             $page = 1;
@@ -59,10 +59,17 @@ class EpisodeController extends Controller
         $this->data['episodeExcerptsList'] = [];
 
         foreach ($this->data['episodeList'] as $episode) {
+            $preparedString = strip_tags(html_entity_decode($episode['content']));
+
+            if (strlen($preparedString) > $excerptSize) {
+                $cutString = substr($preparedString, 0, $excerptSize);
+                $preparedString = substr($cutString, 0, strrpos($cutString, ' '));
+            }
+
             $this->data['episodeExcerptsList'][] = [
                 'id' => $episode['id'],
                 'title' => $episode['title'],
-                'contentExcerpt' => substr(strip_tags(html_entity_decode($episode['content'])), 0, $excerptSize)
+                'contentExcerpt' => $preparedString
             ];    
         }
 
