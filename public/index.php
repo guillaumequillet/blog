@@ -36,5 +36,5 @@ if ($superglobalManager->hasGetVariable('controller') && class_exists("App\\Cont
 
 if (!isset($controller) || !isset($action)) {
     $controller = new EpisodeController();
-    $controller->home();
+    $controller->unfound();
 }
