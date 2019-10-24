@@ -11,14 +11,14 @@
         $nextEpisodeKey = ($currentEpisodeKey < sizeof($data['episodeList']) - 1) ? $currentEpisodeKey + 1 : null;
     ?>
 
-    <article>
-        <h3>Accès rapide à un épisode</h3>
-        <select id="episodeListDropDown">
-            <?php foreach($data['episodeList'] as $episode): ?>
-            <option value="<?= $episode['id'] ?>" <?= $episode['id'] === $data['episode']['id'] ? "selected" : "" ?>><?= $episode['title'] ?></option>
-            <?php endforeach; ?>
-        </select>
+    <h3>Accès rapide à un épisode</h3>
+    <select id="episodeListDropDown">
+        <?php foreach($data['episodeList'] as $episode): ?>
+        <option value="<?= $episode['id'] ?>" <?= $episode['id'] === $data['episode']['id'] ? "selected" : "" ?>><?= $episode['title'] ?></option>
+        <?php endforeach; ?>
+    </select>
 
+    <article>
         <h2><?= $data['episode']['title'] ?></h2>
         <p>Date de publication : <?= $data['episode']['publication_date'] ?></p>
         <?= $data['episode']['content'] ?>
