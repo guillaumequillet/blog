@@ -168,6 +168,10 @@ article, .episode {
     box-sizing: border-box;
 }
 
+article p:first-of-type {
+    text-decoration: underline;
+}
+
 .episode {
     margin: 20px auto;
 }
