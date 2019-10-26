@@ -1,4 +1,5 @@
 body, html {
+    width: 100%;
     height: 100%;
 }
 
@@ -246,6 +247,14 @@ footer p {
 
 /* RESPONSIVE */
 @media all and (max-width: 1024px) {
+    html, body {
+        min-width: 360px;
+    }
+
+    main {
+        width: 100%;
+    }
+
     #mainMenu {
         text-align: center;
     }
